@@ -1,0 +1,24 @@
+# Ignore Python virtual environment
+venv/
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+nltk
+# Ignore logs and cache
+*.log
+*.sqlite3
+*.db
+instance/
+*.pid
+
+# Ignore Jupyter Notebook checkpoints (if any)
+.ipynb_checkpoints/
+
+# Ignore VSCode settings (if using VSCode)
+.vscode/
+
+# Ignore environment variables
+.env
