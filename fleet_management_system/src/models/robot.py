@@ -47,6 +47,10 @@ class Robot:
         self.current_lane = None  # Current lane being traversed [from_vertex, to_vertex]
         self.creation_time = time.time()
         self.animation_offset = random.random() * math.pi * 2  # For bobbing animation
+        self.waiting_time = 0  # Time spent waiting in seconds
+        self.battery_level = 100.0  # Battery level in percentage
+        self.battery_drain_rate = 0.5  # Battery drain per second while moving
+        self.battery_idle_drain_rate = 0.1  # Battery drain per second while idle
         
     def assign_task(self, destination, path):
         """
@@ -54,17 +58,22 @@ class Robot:
         
         Args:
             destination (int): Index of the destination vertex.
-            path (list): List of vertex indices representing the path to the destination.
+            path (list): List of vertex indices representing the planned path.
         """
         self.destination = destination
         self.path = path
-        if len(path) > 1:
+        self.status = self.STATUS_MOVING
+        self.progress = 0.0
+        self.waiting_time = 0
+        
+        # Set up the current lane if the path has at least 2 vertices
+        if path and len(path) > 1:
             self.current_lane = [path[0], path[1]]
-            self.status = self.STATUS_MOVING
-            self.progress = 0.0
+            print(f"Robot {self.id}: Setting current_lane to {self.current_lane}")
         else:
-            self.status = self.STATUS_TASK_COMPLETE
-            
+            self.current_lane = None
+            print(f"Robot {self.id}: Path too short, current_lane set to None")
+        
     def update(self, delta_time, speed=0.3):
         """
         Update the robot's position and status.
@@ -79,7 +88,42 @@ class Robot:
         # Update animation offset for bobbing effect
         self.animation_offset += delta_time * 2
         
+        # Update battery level
+        if self.status == self.STATUS_MOVING:
+            self.battery_level = max(0, self.battery_level - self.battery_drain_rate * delta_time)
+        else:
+            self.battery_level = max(0, self.battery_level - self.battery_idle_drain_rate * delta_time)
+        
+        # If battery is depleted, robot can't move
+        if self.battery_level <= 0 and self.status == self.STATUS_MOVING:
+            self.status = self.STATUS_WAITING
+            return True
+        
+        # Handle waiting status - don't do anything else while waiting
+        # The fleet manager will change the status when the path is clear
+        if self.status == self.STATUS_WAITING:
+            self.waiting_time += delta_time
+            return False
+        
+        # Handle charging status
+        if self.status == self.STATUS_CHARGING:
+            self.battery_level = min(100, self.battery_level + 5 * delta_time)  # Charge at 5% per second
+            if self.battery_level >= 100:
+                self.status = self.STATUS_IDLE
+                return True
+            return False
+        
+        # Don't proceed if not moving
         if self.status != self.STATUS_MOVING:
+            return False
+            
+        # Check if current_lane is None before proceeding
+        if self.current_lane is None:
+            # Something went wrong, reset to idle state
+            # But only if we're not waiting - waiting robots should stay waiting
+            if self.status != self.STATUS_WAITING:
+                self.status = self.STATUS_IDLE
+                return True
             return False
             
         # Update progress along the current lane
@@ -92,15 +136,17 @@ class Robot:
             self.progress = 0.0
             
             # Remove the first vertex from the path as we've reached it
-            self.path.pop(0)
+            if self.path and len(self.path) > 0:
+                self.path.pop(0)
             
             # If there are more vertices in the path, continue moving
-            if len(self.path) > 1:
+            if self.path and len(self.path) > 1:
                 self.current_lane = [self.path[0], self.path[1]]
             # If we've reached the destination
             else:
                 self.status = self.STATUS_TASK_COMPLETE
                 self.current_lane = None
+                self.waiting_time = 0
                 
             return True
             
@@ -157,3 +203,15 @@ class Robot:
             float: Current animation offset value.
         """
         return math.sin(self.animation_offset) * 2  # Small bobbing effect 
+
+    def start_charging(self):
+        """
+        Start charging the robot.
+        
+        Returns:
+            bool: True if charging started, False otherwise.
+        """
+        if self.status != self.STATUS_CHARGING:
+            self.status = self.STATUS_CHARGING
+            return True
+        return False 
