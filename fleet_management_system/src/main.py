@@ -36,7 +36,7 @@ def main():
     fleet_manager = FleetManager(nav_graph)
     
     # Initialize the GUI
-    gui = FleetGUI(width=1024, height=768, title=f"Fleet Management System - {nav_graph.building_name}")
+    gui = FleetGUI(width=1024, height=768, title=f"Fleet Management System - {nav_graph.building_name}", fullscreen=True)
     gui.set_nav_graph(nav_graph)
     gui.set_robots(fleet_manager.robots)
     
@@ -65,11 +65,14 @@ def main():
         if event_info:
             if event_info['type'] == 'spawn_robot':
                 robot = fleet_manager.spawn_robot(event_info['position'])
-                log_event("ROBOT_SPAWNED", {
-                    "robot_id": robot.id,
-                    "position": event_info['position'],
-                    "vertex_name": nav_graph.get_vertex_name(event_info['position'])
-                })
+                if robot:
+                    log_event("ROBOT_SPAWNED", {
+                        "robot_id": robot.id,
+                        "position": event_info['position'],
+                        "vertex_name": nav_graph.get_vertex_name(event_info['position'])
+                    })
+                else:
+                    gui.show_notification(f"Cannot spawn robot: Position already occupied", 3000)
             elif event_info['type'] == 'select_robot':
                 log_event("ROBOT_SELECTED", {
                     "robot_id": event_info['robot'].id,
@@ -92,6 +95,53 @@ def main():
                         "from": event_info['robot'].position,
                         "to": event_info['destination']
                     })
+        
+        # Check for low battery robots and notify
+        for robot in fleet_manager.robots:
+            if robot.battery_level < 10 and robot.status != robot.STATUS_CHARGING:
+                # Find nearest charging station
+                chargers = nav_graph.get_all_vertices_with_chargers()
+                if chargers and robot.status != robot.STATUS_WAITING:
+                    nearest_charger = None
+                    min_distance = float('inf')
+                    
+                    for charger in chargers:
+                        path = fleet_manager.find_path(robot.position, charger)
+                        if path and len(path) < min_distance:
+                            min_distance = len(path)
+                            nearest_charger = charger
+                    
+                    if nearest_charger is not None and robot.status != robot.STATUS_MOVING:
+                        success = fleet_manager.assign_task(robot, nearest_charger)
+                        if success:
+                            gui.show_notification(f"Robot {robot.id} low battery - heading to charger", 3000)
+                            log_event("LOW_BATTERY_CHARGING", {
+                                "robot_id": robot.id,
+                                "battery_level": robot.battery_level,
+                                "charger": nav_graph.get_vertex_name(nearest_charger)
+                            })
+        
+        # Check for robots at charging stations
+        for robot in fleet_manager.robots:
+            if nav_graph.is_charger(robot.position) and robot.status == robot.STATUS_TASK_COMPLETE:
+                robot.start_charging()
+                gui.show_notification(f"Robot {robot.id} arrived at charger and started charging", 3000)
+                log_event("ROBOT_CHARGING", {
+                    "robot_id": robot.id,
+                    "position": robot.position,
+                    "battery_level": robot.battery_level
+                })
+        
+        # Check for traffic conflicts and log them
+        for vertex, waiting_list in fleet_manager.waiting_robots.items():
+            if len(waiting_list) > 1:
+                robot_ids = [robot.id for robot in waiting_list]
+                log_event("TRAFFIC_CONFLICT", {
+                    "vertex": vertex,
+                    "vertex_name": nav_graph.get_vertex_name(vertex),
+                    "waiting_robots": robot_ids,
+                    "queue_length": len(waiting_list)
+                })
         
         # Update robots
         fleet_manager.update_robots(delta_time)
