@@ -1,0 +1,79 @@
+2025-03-29 20:15:27 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-29 20:15:28 - INFO - ROBOT_SPAWNED: {'robot_id': '53bbe6', 'position': 1, 'vertex_name': 'm10'}
+2025-03-29 20:15:31 - INFO - ROBOT_SPAWNED: {'robot_id': '4a46ba', 'position': 7, 'vertex_name': 'm5'}
+2025-03-29 20:15:37 - INFO - ROBOT_SELECTED: {'robot_id': '53bbe6', 'position': 1, 'status': 'idle'}
+2025-03-29 20:16:15 - INFO - TASK_ASSIGNED: {'robot_id': '53bbe6', 'from': 1, 'to': 13, 'destination_name': 'm8'}
+2025-03-29 20:16:49 - INFO - ROBOT_SPAWNED: {'robot_id': 'e0c742', 'position': 3, 'vertex_name': 'm9'}
+2025-03-29 20:16:51 - INFO - ROBOT_SELECTED: {'robot_id': 'e0c742', 'position': 3, 'status': 'idle'}
+2025-03-29 20:16:52 - INFO - ROBOT_SELECTED: {'robot_id': '53bbe6', 'position': 13, 'status': 'task_complete'}
+2025-03-29 20:16:56 - INFO - ROBOT_SELECTED: {'robot_id': 'e0c742', 'position': 3, 'status': 'idle'}
+2025-03-29 20:16:59 - INFO - TASK_ASSIGNED: {'robot_id': 'e0c742', 'from': 3, 'to': 10, 'destination_name': 'm1'}
+2025-03-29 20:33:17 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-29 20:33:20 - INFO - ROBOT_SPAWNED: {'robot_id': 'd64b80', 'position': 10, 'vertex_name': 'm1'}
+2025-03-29 20:33:33 - INFO - ROBOT_SPAWNED: {'robot_id': '4d993b', 'position': 0, 'vertex_name': 'V0'}
+2025-03-29 20:33:41 - INFO - ROBOT_SPAWNED: {'robot_id': '50829e', 'position': 4, 'vertex_name': 'm2'}
+2025-03-29 20:33:50 - INFO - ROBOT_SPAWNED: {'robot_id': '7a3d3d', 'position': 5, 'vertex_name': 'V5'}
+2025-03-29 20:33:56 - INFO - ROBOT_SPAWNED: {'robot_id': '3d58fd', 'position': 11, 'vertex_name': 'm3'}
+2025-03-29 20:34:04 - INFO - ROBOT_SPAWNED: {'robot_id': 'a8cf96', 'position': 6, 'vertex_name': 'm4'}
+2025-03-29 20:34:06 - INFO - ROBOT_SPAWNED: {'robot_id': '1419a3', 'position': 7, 'vertex_name': 'm5'}
+2025-03-29 20:34:14 - INFO - ROBOT_SPAWNED: {'robot_id': 'a852b9', 'position': 12, 'vertex_name': 'm6'}
+2025-03-29 20:34:22 - INFO - ROBOT_SPAWNED: {'robot_id': '576c6c', 'position': 8, 'vertex_name': 'V8'}
+2025-03-29 20:34:30 - INFO - ROBOT_SPAWNED: {'robot_id': 'c0ba34', 'position': 9, 'vertex_name': 'm7'}
+2025-03-29 20:34:33 - INFO - ROBOT_SPAWNED: {'robot_id': '54fa6e', 'position': 2, 'vertex_name': 'V2'}
+2025-03-29 20:34:43 - INFO - ROBOT_SPAWNED: {'robot_id': 'bd82a5', 'position': 13, 'vertex_name': 'm8'}
+2025-03-29 20:34:52 - INFO - ROBOT_SPAWNED: {'robot_id': '95a3d0', 'position': 3, 'vertex_name': 'm9'}
+2025-03-29 20:35:02 - INFO - ROBOT_SPAWNED: {'robot_id': 'b82e74', 'position': 1, 'vertex_name': 'm10'}
+2025-03-29 20:36:13 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-29 20:38:41 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-29 20:38:45 - INFO - ROBOT_SPAWNED: {'robot_id': '4fe411', 'position': 7, 'vertex_name': 'V7'}
+2025-03-29 20:39:12 - INFO - ROBOT_SPAWNED: {'robot_id': 'd8deda', 'position': 13, 'vertex_name': 'V13'}
+2025-03-29 20:39:14 - INFO - ROBOT_SELECTED: {'robot_id': '4fe411', 'position': 7, 'status': 'idle'}
+2025-03-29 20:39:15 - INFO - TASK_ASSIGNED: {'robot_id': '4fe411', 'from': 7, 'to': 8, 'destination_name': 'V8'}
+2025-03-29 20:39:23 - INFO - ROBOT_SPAWNED: {'robot_id': 'e896bc', 'position': 1, 'vertex_name': 'V1'}
+2025-03-29 20:39:25 - INFO - ROBOT_SELECTED: {'robot_id': 'e896bc', 'position': 1, 'status': 'idle'}
+2025-03-29 20:39:28 - INFO - TASK_ASSIGNED: {'robot_id': 'e896bc', 'from': 1, 'to': 0, 'destination_name': 'V0'}
+2025-03-29 20:39:32 - INFO - ROBOT_SELECTED: {'robot_id': 'e896bc', 'position': 0, 'status': 'task_complete'}
+2025-03-29 20:39:34 - INFO - TASK_ASSIGNED: {'robot_id': 'e896bc', 'from': 0, 'to': 12, 'destination_name': 'V12'}
+2025-03-29 20:39:41 - INFO - ROBOT_SPAWNED: {'robot_id': '2820d9', 'position': 9, 'vertex_name': 'm2'}
+2025-03-29 20:39:56 - INFO - ROBOT_SPAWNED: {'robot_id': '46d2f0', 'position': 6, 'vertex_name': 'm1'}
+2025-03-29 20:40:10 - INFO - ROBOT_SPAWNED: {'robot_id': '36d61d', 'position': 11, 'vertex_name': 'V11'}
+2025-03-29 20:40:11 - INFO - ROBOT_SPAWNED: {'robot_id': 'a3997f', 'position': 10, 'vertex_name': 'V10'}
+2025-03-29 20:40:13 - INFO - ROBOT_SPAWNED: {'robot_id': '0b0038', 'position': 0, 'vertex_name': 'V0'}
+2025-03-29 20:40:19 - INFO - ROBOT_SPAWNED: {'robot_id': 'c74b9f', 'position': 1, 'vertex_name': 'V1'}
+2025-03-29 20:40:20 - INFO - ROBOT_SPAWNED: {'robot_id': 'd682ba', 'position': 2, 'vertex_name': 'V2'}
+2025-03-29 20:40:21 - INFO - ROBOT_SPAWNED: {'robot_id': '016b4c', 'position': 3, 'vertex_name': 'V3'}
+2025-03-29 20:40:22 - INFO - ROBOT_SPAWNED: {'robot_id': '035f40', 'position': 4, 'vertex_name': 'V4'}
+2025-03-29 20:40:23 - INFO - ROBOT_SPAWNED: {'robot_id': '9a192c', 'position': 5, 'vertex_name': 'V5'}
+2025-03-29 20:40:26 - INFO - ROBOT_SPAWNED: {'robot_id': 'c589ef', 'position': 7, 'vertex_name': 'V7'}
+2025-03-29 20:40:30 - INFO - ROBOT_SELECTED: {'robot_id': '46d2f0', 'position': 6, 'status': 'idle'}
+2025-03-29 20:40:36 - INFO - ROBOT_SELECTED: {'robot_id': 'c74b9f', 'position': 1, 'status': 'idle'}
+2025-03-29 20:40:39 - INFO - ROBOT_SELECTED: {'robot_id': '0b0038', 'position': 0, 'status': 'idle'}
+2025-03-29 20:40:40 - INFO - ROBOT_SELECTED: {'robot_id': 'd8deda', 'position': 13, 'status': 'idle'}
+2025-03-29 20:40:42 - INFO - ROBOT_SELECTED: {'robot_id': 'e896bc', 'position': 12, 'status': 'task_complete'}
+2025-03-29 20:40:43 - INFO - TASK_ASSIGNED: {'robot_id': 'e896bc', 'from': 12, 'to': 11, 'destination_name': 'V11'}
+2025-03-29 20:40:47 - INFO - ROBOT_SELECTED: {'robot_id': 'a3997f', 'position': 10, 'status': 'idle'}
+2025-03-29 20:40:48 - INFO - TASK_ASSIGNED: {'robot_id': 'a3997f', 'from': 10, 'to': 9, 'destination_name': 'm2'}
+2025-03-29 20:40:54 - INFO - ROBOT_SPAWNED: {'robot_id': 'f4dd88', 'position': 10, 'vertex_name': 'V10'}
+2025-03-29 20:41:00 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-29 20:42:09 - INFO - ROBOT_SPAWNED: {'robot_id': '7bdba0', 'position': 6, 'vertex_name': 'm1'}
+2025-03-29 20:42:15 - INFO - ROBOT_SPAWNED: {'robot_id': 'f9523c', 'position': 7, 'vertex_name': 'V7'}
+2025-03-29 20:42:29 - INFO - ROBOT_SPAWNED: {'robot_id': '37715c', 'position': 1, 'vertex_name': 'V1'}
+2025-03-29 20:42:30 - INFO - ROBOT_SPAWNED: {'robot_id': 'daf94a', 'position': 0, 'vertex_name': 'V0'}
+2025-03-29 20:42:31 - INFO - ROBOT_SPAWNED: {'robot_id': '9352f6', 'position': 13, 'vertex_name': 'V13'}
+2025-03-29 20:42:33 - INFO - ROBOT_SPAWNED: {'robot_id': '0e4a78', 'position': 12, 'vertex_name': 'V12'}
+2025-03-29 20:42:34 - INFO - ROBOT_SPAWNED: {'robot_id': '98ef92', 'position': 11, 'vertex_name': 'V11'}
+2025-03-29 20:42:35 - INFO - ROBOT_SPAWNED: {'robot_id': 'acc122', 'position': 10, 'vertex_name': 'V10'}
+2025-03-29 20:42:37 - INFO - ROBOT_SPAWNED: {'robot_id': '7b9efd', 'position': 9, 'vertex_name': 'm2'}
+2025-03-29 20:42:50 - INFO - ROBOT_SPAWNED: {'robot_id': '6af15d', 'position': 8, 'vertex_name': 'V8'}
+2025-03-29 20:42:52 - INFO - ROBOT_SPAWNED: {'robot_id': 'a05be2', 'position': 2, 'vertex_name': 'V2'}
+2025-03-29 20:42:53 - INFO - ROBOT_SPAWNED: {'robot_id': 'f1c2a3', 'position': 3, 'vertex_name': 'V3'}
+2025-03-29 20:42:54 - INFO - ROBOT_SPAWNED: {'robot_id': 'a8e9ab', 'position': 4, 'vertex_name': 'V4'}
+2025-03-29 20:42:55 - INFO - ROBOT_SPAWNED: {'robot_id': 'da7366', 'position': 5, 'vertex_name': 'V5'}
+2025-03-29 20:43:59 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_3.json', 'building': 'new_site', 'level': 'l1', 'vertices': 7, 'lanes': 14}
+2025-03-29 20:44:04 - INFO - ROBOT_SPAWNED: {'robot_id': '157112', 'position': 3, 'vertex_name': 'p3'}
+2025-03-29 20:44:05 - INFO - ROBOT_SPAWNED: {'robot_id': '69d894', 'position': 4, 'vertex_name': 'p1'}
+2025-03-29 20:44:08 - INFO - ROBOT_SPAWNED: {'robot_id': '7463a2', 'position': 5, 'vertex_name': 'p2'}
+2025-03-29 20:44:10 - INFO - ROBOT_SPAWNED: {'robot_id': '3baf70', 'position': 6, 'vertex_name': 'p5'}
+2025-03-29 20:44:11 - INFO - ROBOT_SPAWNED: {'robot_id': '32f312', 'position': 2, 'vertex_name': 'V2'}
+2025-03-29 20:44:13 - INFO - ROBOT_SPAWNED: {'robot_id': '141ac9', 'position': 1, 'vertex_name': 'V1'}
+2025-03-29 20:44:14 - INFO - ROBOT_SPAWNED: {'robot_id': 'ca285d', 'position': 0, 'vertex_name': 'home'}
