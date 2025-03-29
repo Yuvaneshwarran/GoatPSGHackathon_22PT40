@@ -1,0 +1,159 @@
+import time
+import uuid
+import random
+import math
+
+class Robot:
+    # Robot status constants
+    STATUS_IDLE = "idle"
+    STATUS_MOVING = "moving"
+    STATUS_WAITING = "waiting"
+    STATUS_CHARGING = "charging"
+    STATUS_TASK_COMPLETE = "task_complete"
+    
+    # Status colors
+    STATUS_COLORS = {
+        STATUS_IDLE: (100, 100, 100),        # Gray
+        STATUS_MOVING: (0, 200, 0),          # Green
+        STATUS_WAITING: (255, 165, 0),       # Orange
+        STATUS_CHARGING: (0, 0, 255),        # Blue
+        STATUS_TASK_COMPLETE: (128, 0, 128)  # Purple
+    }
+    
+    def __init__(self, position, color=None):
+        """
+        Initialize a robot.
+        
+        Args:
+            position (int): Index of the vertex where the robot is located.
+            color (tuple): RGB color tuple for the robot.
+        """
+        self.id = str(uuid.uuid4())[:6]  # Generate a unique ID
+        self.position = position  # Current vertex index
+        
+        # Generate a random color if none is provided
+        if color is None:
+            color = (
+                random.randint(100, 255),
+                random.randint(100, 255),
+                random.randint(100, 255)
+            )
+        self.color = color
+        
+        self.status = self.STATUS_IDLE
+        self.path = []  # List of vertex indices representing the planned path
+        self.destination = None  # Target vertex index
+        self.progress = 0.0  # Progress along the current lane (0.0 to 1.0)
+        self.current_lane = None  # Current lane being traversed [from_vertex, to_vertex]
+        self.creation_time = time.time()
+        self.animation_offset = random.random() * math.pi * 2  # For bobbing animation
+        
+    def assign_task(self, destination, path):
+        """
+        Assign a navigation task to the robot.
+        
+        Args:
+            destination (int): Index of the destination vertex.
+            path (list): List of vertex indices representing the path to the destination.
+        """
+        self.destination = destination
+        self.path = path
+        if len(path) > 1:
+            self.current_lane = [path[0], path[1]]
+            self.status = self.STATUS_MOVING
+            self.progress = 0.0
+        else:
+            self.status = self.STATUS_TASK_COMPLETE
+            
+    def update(self, delta_time, speed=0.3):
+        """
+        Update the robot's position and status.
+        
+        Args:
+            delta_time (float): Time elapsed since the last update in seconds.
+            speed (float): Speed of the robot in units per second.
+        
+        Returns:
+            bool: True if the robot's state changed, False otherwise.
+        """
+        # Update animation offset for bobbing effect
+        self.animation_offset += delta_time * 2
+        
+        if self.status != self.STATUS_MOVING:
+            return False
+            
+        # Update progress along the current lane
+        self.progress += speed * delta_time
+        
+        # If we've reached the end of the current lane
+        if self.progress >= 1.0:
+            # Move to the next vertex in the path
+            self.position = self.current_lane[1]
+            self.progress = 0.0
+            
+            # Remove the first vertex from the path as we've reached it
+            self.path.pop(0)
+            
+            # If there are more vertices in the path, continue moving
+            if len(self.path) > 1:
+                self.current_lane = [self.path[0], self.path[1]]
+            # If we've reached the destination
+            else:
+                self.status = self.STATUS_TASK_COMPLETE
+                self.current_lane = None
+                
+            return True
+            
+        return False
+        
+    def get_current_position(self, nav_graph):
+        """
+        Get the current coordinates of the robot.
+        
+        Args:
+            nav_graph (NavGraph): The navigation graph.
+            
+        Returns:
+            tuple: (x, y) coordinates of the robot.
+        """
+        if self.status != self.STATUS_MOVING or self.current_lane is None:
+            return nav_graph.get_vertex_coordinates(self.position)
+            
+        # Interpolate between the two vertices of the current lane
+        start_pos = nav_graph.get_vertex_coordinates(self.current_lane[0])
+        end_pos = nav_graph.get_vertex_coordinates(self.current_lane[1])
+        
+        if start_pos is None or end_pos is None:
+            return nav_graph.get_vertex_coordinates(self.position)
+            
+        # Use a slight easing function for smoother movement
+        progress = self.progress
+        if progress < 0.5:
+            # Accelerate
+            eased_progress = 2 * progress * progress
+        else:
+            # Decelerate
+            eased_progress = -1 + (4 - 2 * progress) * progress
+            
+        x = start_pos[0] + (end_pos[0] - start_pos[0]) * eased_progress
+        y = start_pos[1] + (end_pos[1] - start_pos[1]) * eased_progress
+        
+        return (x, y)
+        
+    def get_status_color(self):
+        """
+        Get the color representing the robot's current status.
+        
+        Returns:
+            tuple: RGB color tuple.
+        """
+        return self.STATUS_COLORS.get(self.status, (255, 255, 255))
+        
+    def get_animation_offset(self):
+        """
+        Get the current animation offset for visual effects.
+        
+        Returns:
+            float: Current animation offset value.
+        """
+        return math.sin(self.animation_offset) * 2  # Small bobbing effect 
