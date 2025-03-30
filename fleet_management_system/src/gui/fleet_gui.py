@@ -3,17 +3,23 @@ import sys
 import math
 
 class FleetGUI:
-    # Colors
+    # Dark mode color palette
     WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
-    GRAY = (200, 200, 200)
-    RED = (255, 0, 0)
-    GREEN = (0, 255, 0)
-    BLUE = (0, 0, 255)
-    YELLOW = (255, 255, 0)
-    ORANGE = (255, 165, 0)
-    PURPLE = (128, 0, 128)
-    LIGHT_BLUE = (173, 216, 230)
+    BLACK = (18, 18, 18)  # Dark background
+    GRAY = (45, 45, 45)  # Darker gray for elements
+    RED = (244, 67, 54)  # Material Design Red
+    GREEN = (76, 175, 80)  # Material Design Green
+    BLUE = (33, 150, 243)  # Material Design Blue
+    YELLOW = (255, 235, 59)  # Material Design Yellow
+    ORANGE = (255, 152, 0)  # Material Design Orange
+    PURPLE = (156, 39, 176)  # Material Design Purple
+    LIGHT_BLUE = (33, 150, 243)  # Light blue for accents
+    DARK_BLUE = (25, 118, 210)  # Darker blue for accents
+    TEXT_COLOR = (200, 200, 200)  # Light gray for text
+    CARD_BG = (30, 30, 30)  # Slightly lighter than background for cards
+    PANEL_BG = (35, 35, 35)  # Panel background
+    BORDER_COLOR = (60, 60, 60)  # Border color
+    SHADOW_COLOR = (10, 10, 10)  # Shadow color
     
     # Vertex types
     VERTEX_NORMAL = 0
@@ -43,7 +49,6 @@ class FleetGUI:
         
         # Set up display mode
         if fullscreen:
-            # Get the current screen info
             info = pygame.display.Info()
             self.width = info.current_w
             self.height = info.current_h
@@ -54,30 +59,28 @@ class FleetGUI:
         pygame.display.set_caption(title)
         self.clock = pygame.time.Clock()
         
-        # Use better fonts with larger sizes
+        # Use modern fonts
         try:
-            # Try to use Arial or a similar sans-serif font
-            self.font = pygame.font.SysFont("Arial", 28)
-            self.small_font = pygame.font.SysFont("Arial", 22)
-            self.title_font = pygame.font.SysFont("Arial", 36, bold=True)
-            self.bold_font = pygame.font.SysFont("Arial", 28, bold=True)
+            self.font = pygame.font.SysFont("Segoe UI", 24)
+            self.small_font = pygame.font.SysFont("Segoe UI", 20)
+            self.title_font = pygame.font.SysFont("Segoe UI", 32, bold=True)
+            self.bold_font = pygame.font.SysFont("Segoe UI", 24, bold=True)
         except:
-            # Fall back to default font if Arial is not available
-            self.font = pygame.font.SysFont(None, 28)
-            self.small_font = pygame.font.SysFont(None, 22)
-            self.title_font = pygame.font.SysFont(None, 36, bold=True)
-            self.bold_font = pygame.font.SysFont(None, 28, bold=True)
+            self.font = pygame.font.SysFont(None, 24)
+            self.small_font = pygame.font.SysFont(None, 20)
+            self.title_font = pygame.font.SysFont(None, 32, bold=True)
+            self.bold_font = pygame.font.SysFont(None, 24, bold=True)
         
-        # Visualization parameters - doubled thickness
-        self.vertex_radius = 30  # Increased from 20 to 30
-        self.robot_radius = 20   # Increased from 15 to 20
-        self.scale_factor = 20   # Scale factor for converting coordinates
+        # Visualization parameters
+        self.vertex_radius = 25  # Reduced from 35
+        self.robot_radius = 35   # Reduced from 25
+        self.scale_factor = 20
         self.offset_x = self.width // 2
         self.offset_y = self.height // 2
-        self.edge_thickness = 8  # Increased from 4 to 8
-        self.reserved_edge_thickness = 10  # Increased from 5 to 10
+        self.edge_thickness = 4  # Reduced from 6
+        self.reserved_edge_thickness = 6  # Reduced from 8
         
-        # Store references to the navigation graph and robots
+        # Store references
         self.nav_graph = None
         self.robots = []
         
@@ -96,23 +99,26 @@ class FleetGUI:
         self.show_help = True
         self.notification = None
         self.notification_time = 0
-        self.show_robot_panel = True  # New flag to toggle robot info panel
-        self.panel_width = 400  # Increased from 300 to 400 for more space
+        self.show_robot_panel = True
+        self.panel_width = 450  # Increased for better readability
         
-        # Load background image
-        try:
-            self.background = pygame.Surface((self.width, self.height))
-            self.background.fill((240, 248, 255))  # Light blue background
-            
-            # Create a grid pattern
-            for x in range(0, self.width, 20):
-                pygame.draw.line(self.background, (220, 220, 220), (x, 0), (x, self.height))
-            for y in range(0, self.height, 20):
-                pygame.draw.line(self.background, (220, 220, 220), (0, y), (self.width, y))
-                
-        except Exception as e:
-            print(f"Could not load background: {e}")
-            self.background = None
+        # Animation state
+        self.animation_time = 0
+        self.pulse_scale = 1.0
+        
+        # Create dark mode background
+        self.background = pygame.Surface((self.width, self.height))
+        self.background.fill(self.BLACK)  # Dark background
+        
+        # Create subtle grid pattern
+        for x in range(0, self.width, 30):
+            pygame.draw.line(self.background, (25, 25, 25), (x, 0), (x, self.height))
+        for y in range(0, self.height, 30):
+            pygame.draw.line(self.background, (25, 25, 25), (0, y), (self.width, y))
+        
+        # Load robot image
+        self.robot_image = pygame.image.load("/home/yuvanesh/Desktop/Github/GoatPSGHackathon_22PT40/fleet_management_system/src/gui/robot.png")  # Update with the correct path to your image
+        self.robot_image = pygame.transform.scale(self.robot_image, (self.robot_radius * 2, self.robot_radius * 2))  # Scale the image to fit the robot size
         
     def set_nav_graph(self, nav_graph):
         """
@@ -194,10 +200,7 @@ class FleetGUI:
         
     def draw_vertex(self, vertex_index):
         """
-        Draw a vertex on the screen.
-        
-        Args:
-            vertex_index (int): Index of the vertex to draw.
+        Draw a vertex with modern styling.
         """
         if self.nav_graph is None:
             return
@@ -220,13 +223,13 @@ class FleetGUI:
         # Determine if this vertex is being hovered over
         is_hover = (self.hover_vertex == vertex_index)
         
-        # Draw different vertex types with more distinctive colors
+        # Draw vertex with modern styling
         if vertex_type == self.VERTEX_CHARGER:
-            # Charging station - Blue with lightning bolt
+            # Charging station with modern design
             pygame.draw.circle(self.screen, self.BLUE, screen_pos, self.vertex_radius)
-            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 6)  # Thicker border
+            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 8)
             
-            # Draw a lightning bolt icon
+            # Draw lightning bolt with gradient
             points = [
                 (screen_pos[0], screen_pos[1] - self.vertex_radius//2),
                 (screen_pos[0] - self.vertex_radius//3, screen_pos[1]),
@@ -235,30 +238,43 @@ class FleetGUI:
                 (screen_pos[0] + self.vertex_radius//3, screen_pos[1]),
                 (screen_pos[0], screen_pos[1] + self.vertex_radius//4)
             ]
-            pygame.draw.polygon(self.screen, self.BLUE, points)
+            pygame.draw.polygon(self.screen, self.DARK_BLUE, points)
             
         elif vertex_type == self.VERTEX_NAMED:
-            # Named location - Bright green
+            # Named location with modern design
             pygame.draw.circle(self.screen, self.GREEN, screen_pos, self.vertex_radius)
-            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 6)  # Thicker border
+            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 8)
+            
+            # Add subtle pattern
+            for i in range(3):
+                radius = self.vertex_radius - 12 - i * 4
+                pygame.draw.circle(self.screen, (200, 255, 200), screen_pos, radius, 2)
         else:
-            # Normal vertex - Gray
+            # Normal vertex with modern design
             pygame.draw.circle(self.screen, self.GRAY, screen_pos, self.vertex_radius)
-            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 6)  # Thicker border
+            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 8)
         
-        # Draw hover effect
+        # Draw hover effect with animation
         if is_hover:
-            pygame.draw.circle(self.screen, self.YELLOW, screen_pos, self.vertex_radius + 4, 3)  # Thicker hover ring
+            pulse = (math.sin(self.animation_time * 0.01) + 1) * 0.5
+            hover_radius = self.vertex_radius + 4 + int(pulse * 2)
+            pygame.draw.circle(self.screen, self.YELLOW, screen_pos, hover_radius, 3)
         
-        # Draw vertex name if it has one
+        # Draw vertex name with modern typography and dark mode
         if vertex_type in [self.VERTEX_NAMED, self.VERTEX_CHARGER]:
             name = self.nav_graph.get_vertex_name(vertex_index)
-            text = self.bold_font.render(name, True, self.BLACK)  # Use bold font for names
-            text_rect = text.get_rect(center=(screen_pos[0], screen_pos[1] - self.vertex_radius - 20))  # Moved further from vertex
+            text = self.bold_font.render(name, True, self.TEXT_COLOR)
+            text_rect = text.get_rect(center=(screen_pos[0], screen_pos[1] - self.vertex_radius - 25))
+            
+            # Draw text background with dark mode colors
+            bg_rect = text_rect.inflate(20, 10)
+            pygame.draw.rect(self.screen, self.CARD_BG, bg_rect)
+            pygame.draw.rect(self.screen, self.BORDER_COLOR, bg_rect, 1)
+            
             self.screen.blit(text, text_rect)
         
-        # Draw vertex index for all vertices
-        index_text = self.font.render(str(vertex_index), True, self.BLACK)
+        # Draw vertex index with dark mode
+        index_text = self.font.render(str(vertex_index), True, self.TEXT_COLOR)
         index_rect = index_text.get_rect(center=screen_pos)
         self.screen.blit(index_text, index_rect)
         
@@ -311,11 +327,11 @@ class FleetGUI:
                 # Draw a thicker line with yellow color
                 pygame.draw.line(self.screen, lane_color, (start_x, start_y), (end_x, end_y), self.reserved_edge_thickness)
             else:
-                pygame.draw.line(self.screen, self.BLACK, (start_x, start_y), (end_x, end_y), self.edge_thickness)
+                pygame.draw.line(self.screen, self.WHITE, (start_x, start_y), (end_x, end_y), self.edge_thickness)
             
             # Draw an arrow to indicate direction
-            arrow_length = 16  # Increased from 12 to 16
-            arrow_width = 12   # Increased from 8 to 12
+            arrow_length = 12  # Reduced from 16
+            arrow_width = 8    # Reduced from 12
             
             # Calculate arrow position (3/4 of the way)
             arrow_pos_x = start_x + (end_x - start_x) * 0.75
@@ -334,7 +350,7 @@ class FleetGUI:
             )
             
             # Draw the arrow
-            pygame.draw.polygon(self.screen, self.BLACK, [arrow_p1, arrow_p2, arrow_p3])
+            pygame.draw.polygon(self.screen, self.WHITE, [arrow_p1, arrow_p2, arrow_p3])
         
     def draw_robot(self, robot):
         """
@@ -345,50 +361,32 @@ class FleetGUI:
         """
         if self.nav_graph is None:
             return
-            
-        # Get the current position of the robot
+        
         pos = robot.get_current_position(self.nav_graph)
         if pos is None:
             return
-            
+        
         screen_pos = self.world_to_screen(pos[0], pos[1])
         
-        # Determine if this robot is being hovered over
-        is_hover = (self.hover_robot == robot)
+        # Draw the robot image instead of a circle
+        self.screen.blit(self.robot_image, (screen_pos[0] - self.robot_radius, screen_pos[1] - self.robot_radius))
         
-        # Determine if this robot is selected
-        is_selected = (self.selected_robot == robot)
+        # Optionally, you can add a border or highlight if the robot is selected
+        if robot == self.selected_robot:
+            pygame.draw.rect(self.screen, self.YELLOW, (screen_pos[0] - self.robot_radius, screen_pos[1] - self.robot_radius, self.robot_radius * 2, self.robot_radius * 2), 2)
         
-        # Draw selection/hover indicators
-        if is_selected:
-            # Pulsating selection ring
-            pulse = (math.sin(pygame.time.get_ticks() * 0.01) + 1) * 0.5  # 0 to 1
-            select_radius = self.robot_radius + 5 + int(pulse * 2)
-            pygame.draw.circle(self.screen, self.YELLOW, screen_pos, select_radius, 2)
-        elif is_hover:
-            # Hover indicator
-            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.robot_radius + 4, 2)
+        # Draw the robot ID with dark mode
+        text = self.bold_font.render(robot.id, True, self.TEXT_COLOR)
+        text_rect = text.get_rect(center=(screen_pos[0], screen_pos[1] - self.robot_radius - 15))
         
-        # Draw the robot with a gradient effect
-        for i in range(self.robot_radius, 0, -2):
-            # Lighten the color as we get to the center
-            factor = 0.7 + 0.3 * (1 - i / self.robot_radius)
-            color = (
-                min(255, int(robot.color[0] * factor)),
-                min(255, int(robot.color[1] * factor)),
-                min(255, int(robot.color[2] * factor))
-            )
-            pygame.draw.circle(self.screen, color, screen_pos, i)
+        # Draw text background with dark mode colors
+        bg_rect = text_rect.inflate(20, 10)
+        pygame.draw.rect(self.screen, self.CARD_BG, bg_rect)
+        pygame.draw.rect(self.screen, self.BORDER_COLOR, bg_rect, 1)
         
-        # Draw the robot outline
-        pygame.draw.circle(self.screen, self.BLACK, screen_pos, self.robot_radius, 2)
-        
-        # Draw the robot ID
-        text = self.small_font.render(robot.id, True, self.BLACK)
-        text_rect = text.get_rect(center=(screen_pos[0], screen_pos[1] - self.robot_radius - 10))
         self.screen.blit(text, text_rect)
         
-        # Draw the robot status
+        # Draw status indicator with modern design
         status_colors = {
             "idle": self.GRAY,
             "moving": self.GREEN,
@@ -398,51 +396,59 @@ class FleetGUI:
         }
         status_color = status_colors.get(robot.status, self.WHITE)
         
-        # Draw a small status indicator
+        # Draw status indicator with animation
+        if robot.status == "moving":
+            pulse = (math.sin(self.animation_time * 0.02) + 1) * 0.5
+            indicator_radius = 6 + int(pulse * 2)
+        else:
+            indicator_radius = 6
+            
         pygame.draw.circle(self.screen, status_color, 
-                          (screen_pos[0] + self.robot_radius + 5, screen_pos[1] - self.robot_radius - 5), 5)
+                          (screen_pos[0] + self.robot_radius + 8, screen_pos[1] - self.robot_radius - 8), 
+                          indicator_radius)
         
-        # Draw battery level indicator if below 30%
+        # Draw battery level with modern design
         if robot.battery_level < 30:
             # Draw battery outline
-            battery_width = 20
-            battery_height = 10
+            battery_width = 25
+            battery_height = 12
             battery_x = screen_pos[0] - battery_width // 2
-            battery_y = screen_pos[1] + self.robot_radius + 5
+            battery_y = screen_pos[1] + self.robot_radius + 8
             
+            # Draw battery background
+            pygame.draw.rect(self.screen, self.WHITE, 
+                            (battery_x, battery_y, battery_width, battery_height))
             pygame.draw.rect(self.screen, self.BLACK, 
                             (battery_x, battery_y, battery_width, battery_height), 1)
             
-            # Draw battery fill based on level
+            # Draw battery fill with gradient
             fill_width = int((battery_width - 2) * (robot.battery_level / 100))
             if robot.battery_level < 15:
                 fill_color = self.RED
             else:
                 fill_color = self.YELLOW
-            
+                
             pygame.draw.rect(self.screen, fill_color, 
                             (battery_x + 1, battery_y + 1, fill_width, battery_height - 2))
         
-        # If the robot is waiting, show a waiting indicator
+        # Draw waiting indicator with animation
         if robot.status == "waiting":
-            # Draw a clock-like waiting indicator
-            wait_radius = 8
-            wait_x = screen_pos[0] - self.robot_radius - 10
+            wait_radius = 10
+            wait_x = screen_pos[0] - self.robot_radius - 15
             wait_y = screen_pos[1]
             
-            # Draw clock face
+            # Draw clock face with modern design
             pygame.draw.circle(self.screen, self.WHITE, (wait_x, wait_y), wait_radius)
             pygame.draw.circle(self.screen, self.BLACK, (wait_x, wait_y), wait_radius, 1)
             
-            # Draw clock hands based on waiting time
+            # Animate clock hands
             angle = (robot.waiting_time % 4) * math.pi / 2
-            hand_x = wait_x + math.sin(angle) * (wait_radius - 2)
-            hand_y = wait_y - math.cos(angle) * (wait_radius - 2)
+            hand_x = wait_x + math.sin(angle) * (wait_radius - 3)
+            hand_y = wait_y - math.cos(angle) * (wait_radius - 3)
             pygame.draw.line(self.screen, self.BLACK, (wait_x, wait_y), (hand_x, hand_y), 2)
         
-        # If the robot is moving, draw its path
+        # Draw path with modern styling
         if robot.status == "moving" and robot.path and len(robot.path) > 1:
-            # Draw the remaining path
             path_points = []
             for i in range(robot.path.index(robot.position), len(robot.path)):
                 vertex_pos = self.nav_graph.get_vertex_coordinates(robot.path[i])
@@ -450,13 +456,40 @@ class FleetGUI:
                     path_points.append(self.world_to_screen(vertex_pos[0], vertex_pos[1]))
             
             if len(path_points) > 1:
-                # Draw dashed line for the path
-                pygame.draw.lines(self.screen, robot.color, False, path_points, 2)
+                # Draw dashed line with animation
+                dash_length = 10
+                gap_length = 5
+                total_length = dash_length + gap_length
                 
-                # Draw destination marker
+                for i in range(len(path_points) - 1):
+                    start = path_points[i]
+                    end = path_points[i + 1]
+                    dx = end[0] - start[0]
+                    dy = end[1] - start[1]
+                    length = math.sqrt(dx*dx + dy*dy)
+                    
+                    if length > 0:
+                        dx, dy = dx/length, dy/length
+                        current_pos = 0
+                        
+                        while current_pos < length:
+                            dash_start = (
+                                start[0] + dx * current_pos,
+                                start[1] + dy * current_pos
+                            )
+                            dash_end = (
+                                start[0] + dx * min(current_pos + dash_length, length),
+                                start[1] + dy * min(current_pos + dash_length, length)
+                            )
+                            pygame.draw.line(self.screen, robot.color, dash_start, dash_end, 2)
+                            current_pos += total_length
+                
+                # Draw destination marker with animation
                 dest_pos = path_points[-1]
-                pygame.draw.circle(self.screen, robot.color, dest_pos, 5, 2)
-        
+                pulse = (math.sin(self.animation_time * 0.02) + 1) * 0.5
+                marker_radius = 6 + int(pulse * 2)
+                pygame.draw.circle(self.screen, robot.color, dest_pos, marker_radius, 2)
+
     def find_vertex_at_position(self, screen_x, screen_y):
         """
         Find the vertex at the given screen position.
@@ -524,32 +557,66 @@ class FleetGUI:
     
     def draw_info_panel(self):
         """
-        Draw an information panel with instructions and status.
+        Draw an information panel with dark mode styling.
         """
-        # Draw a semi-transparent background
-        info_surface = pygame.Surface((300, 220))
-        info_surface.set_alpha(220)
-        info_surface.fill(self.LIGHT_BLUE)
-        self.screen.blit(info_surface, (10, 10))
+        # Create modern card background
+        card_width = 350
+        card_height = 300  # Increased height to accommodate better spacing
+        card_x = 20
+        card_y = 20
         
-        # Draw border
-        pygame.draw.rect(self.screen, self.BLACK, (10, 10, 300, 220), 2)
+        # Draw card with shadow
+        card_surface = pygame.Surface((card_width, card_height))
+        card_surface.fill(self.CARD_BG)
         
-        # Draw title
-        title_text = self.title_font.render("Fleet Management System", True, self.BLACK)
-        self.screen.blit(title_text, (20, 15))
+        # Add subtle shadow
+        shadow_surface = pygame.Surface((card_width + 4, card_height + 4))
+        shadow_surface.fill(self.SHADOW_COLOR)
+        self.screen.blit(shadow_surface, (card_x + 2, card_y + 2))
+        self.screen.blit(card_surface, (card_x, card_y))
+        
+        # Draw card border
+        pygame.draw.rect(self.screen, self.BORDER_COLOR, (card_x, card_y, card_width, card_height), 1)
+        
+        # Draw title with dark mode typography
+        title_text = self.title_font.render("Fleet Management System", True, self.TEXT_COLOR)
+        title_rect = title_text.get_rect()
+        title_rect.centerx = card_x + card_width // 2
+        title_rect.y = card_y + 20
+        self.screen.blit(title_text, title_rect)
+        
+        # Draw horizontal line below title
+        pygame.draw.line(self.screen, self.BORDER_COLOR, 
+                        (card_x + 20, card_y + 55), 
+                        (card_x + card_width - 20, card_y + 55), 2)
         
         # Draw building and level info
         if self.nav_graph:
-            building_text = self.font.render(f"Building: {self.nav_graph.building_name}", True, self.BLACK)
-            level_text = self.font.render(f"Level: {self.nav_graph.level_name}", True, self.BLACK)
-            self.screen.blit(building_text, (20, 50))
-            self.screen.blit(level_text, (20, 75))
+            building_text = self.font.render(f"Building: {self.nav_graph.building_name}", True, self.TEXT_COLOR)
+            level_text = self.font.render(f"Level: {self.nav_graph.level_name}", True, self.TEXT_COLOR)
+            
+            # Center align building and level info
+            building_rect = building_text.get_rect()
+            level_rect = level_text.get_rect()
+            
+            building_rect.centerx = card_x + card_width // 2
+            level_rect.centerx = card_x + card_width // 2
+            
+            building_rect.y = card_y + 70
+            level_rect.y = card_y + 95
+            
+            self.screen.blit(building_text, building_rect)
+            self.screen.blit(level_text, level_rect)
         
-        # Draw instructions
+        # Draw horizontal line below building/level info
+        pygame.draw.line(self.screen, self.BORDER_COLOR, 
+                        (card_x + 20, card_y + 120), 
+                        (card_x + card_width - 20, card_y + 120), 2)
+        
+        # Draw instructions with dark mode styling and better spacing
         instructions = [
             "• Click on vertex: Spawn robot",
-            "• Click on robot: Select robot (yellow outline)",
+            "• Click on robot: Select robot",
             "• Click on vertex after selecting: Assign task",
             "• Green vertices: Charging stations",
             "• Orange vertices: Named locations",
@@ -557,67 +624,214 @@ class FleetGUI:
             "• Blue indicator: Robot charging"
         ]
         
-        y_pos = 100
-        for instruction in instructions:
-            text = self.small_font.render(instruction, True, self.BLACK)
-            self.screen.blit(text, (20, y_pos))
-            y_pos += 20
-            
-        # Draw robot count
-        robots_text = self.font.render(f"Robots: {len(self.robots)}", True, self.BLACK)
-        self.screen.blit(robots_text, (20, 200))
+        # Calculate total height of instructions
+        instruction_height = len(instructions) * 28  # 28 pixels per line
+        start_y = card_y + 135  # Start position after the line
         
-        # Draw selected robot info
-        if self.selected_robot:
-            # Draw a semi-transparent background for robot info
-            robot_info_surface = pygame.Surface((300, 120))
-            robot_info_surface.set_alpha(220)
-            robot_info_surface.fill(self.LIGHT_BLUE)
-            self.screen.blit(robot_info_surface, (10, 240))
+        for i, instruction in enumerate(instructions):
+            # Create a background rect for each instruction
+            text = self.small_font.render(instruction, True, self.TEXT_COLOR)
+            text_rect = text.get_rect()
+            text_rect.x = card_x + 30  # Increased left margin
+            text_rect.y = start_y + (i * 28)  # Increased line spacing
             
-            # Draw border
-            pygame.draw.rect(self.screen, self.BLACK, (10, 240, 300, 120), 2)
+            # Draw subtle highlight for alternate lines
+            if i % 2 == 0:
+                highlight_rect = pygame.Rect(card_x + 20, text_rect.y - 2, 
+                                          card_width - 40, text_rect.height + 4)
+                pygame.draw.rect(self.screen, (35, 35, 35), highlight_rect)
             
-            # Draw robot info
-            robot_title = self.bold_font.render(f"Selected Robot: {self.selected_robot.id}", True, self.BLACK)
-            self.screen.blit(robot_title, (20, 245))
+            self.screen.blit(text, text_rect)
+        
+        # Draw horizontal line below instructions
+        line_y = start_y + instruction_height + 10
+        pygame.draw.line(self.screen, self.BORDER_COLOR, 
+                        (card_x + 20, line_y), 
+                        (card_x + card_width - 20, line_y), 2)
+        
+        # Draw robot count with dark mode styling
+        robots_text = self.font.render(f"Active Robots: {len(self.robots)}", True, self.TEXT_COLOR)
+        robots_rect = robots_text.get_rect()
+        robots_rect.centerx = card_x + card_width // 2
+        robots_rect.y = line_y + 15
+        self.screen.blit(robots_text, robots_rect)
+
+    def draw_robot_panel(self):
+        """
+        Draw a modern robot status panel with dark mode.
+        """
+        # Create panel background with gradient
+        panel_rect = pygame.Rect(self.width - self.panel_width, 0, self.panel_width, self.height)
+        panel_surface = pygame.Surface((self.panel_width, self.height))
+        panel_surface.fill(self.PANEL_BG)
+        
+        # Add subtle gradient
+        for y in range(self.height):
+            alpha = int(255 * (1 - y / self.height))
+            pygame.draw.line(panel_surface, (30, 30, 30), (0, y), (self.panel_width, y))
+        
+        panel_surface.set_alpha(240)  # Slightly transparent
+        
+        # Draw panel border
+        pygame.draw.rect(panel_surface, self.BORDER_COLOR, (0, 0, self.panel_width, self.height), 2)
+        
+        # Draw panel title with dark mode typography
+        title = self.title_font.render("Robot Status", True, self.TEXT_COLOR)
+        title_rect = title.get_rect(center=(self.panel_width // 2, 40))
+        panel_surface.blit(title, title_rect)
+        
+        # Draw horizontal line with gradient
+        pygame.draw.line(panel_surface, self.BORDER_COLOR, (20, 70), (self.panel_width - 20, 70), 2)
+        
+        # Count robots by status
+        status_counts = {}
+        for robot in self.robots:
+            status = robot.status
+            status_counts[status] = status_counts.get(status, 0) + 1
+        
+        # Draw status summary with modern cards
+        y_pos = 90
+        summary_title = self.bold_font.render("Summary", True, self.TEXT_COLOR)
+        panel_surface.blit(summary_title, (20, y_pos))
+        y_pos += 40
+        
+        for status, count in status_counts.items():
+            # Draw status card
+            card_width = self.panel_width - 40
+            card_height = 40
+            card_x = 20
             
-            status_text = self.font.render(f"Status: {self.selected_robot.status}", True, self.BLACK)
-            self.screen.blit(status_text, (20, 270))
+            # Draw card background
+            pygame.draw.rect(panel_surface, self.CARD_BG, 
+                            (card_x, y_pos, card_width, card_height))
+            pygame.draw.rect(panel_surface, self.BORDER_COLOR, 
+                            (card_x, y_pos, card_width, card_height), 1)
             
-            position_name = self.nav_graph.get_vertex_name(self.selected_robot.position)
-            position_text = self.font.render(f"Position: {position_name}", True, self.BLACK)
-            self.screen.blit(position_text, (20, 295))
+            # Draw status text
+            status_text = self.font.render(f"{status.capitalize()}: {count}", True, self.TEXT_COLOR)
+            panel_surface.blit(status_text, (card_x + 20, y_pos + 10))
             
-            battery_text = self.font.render(f"Battery: {self.selected_robot.battery_level:.1f}%", True, self.BLACK)
-            self.screen.blit(battery_text, (20, 320))
+            y_pos += 50
+        
+        # Draw horizontal line with gradient
+        y_pos += 10
+        pygame.draw.line(panel_surface, self.BORDER_COLOR, (20, y_pos), (self.panel_width - 20, y_pos), 2)
+        y_pos += 20
+        
+        # Draw detailed robot information
+        details_title = self.bold_font.render("Robot Details", True, self.TEXT_COLOR)
+        panel_surface.blit(details_title, (20, y_pos))
+        y_pos += 40
+        
+        # Sort robots by status
+        sorted_robots = sorted(self.robots, key=lambda r: (r.status, r.id))
+        
+        for robot in sorted_robots:
+            # Draw robot card
+            card_width = self.panel_width - 40
+            card_height = 80
+            card_x = 20
             
-            if self.selected_robot.destination is not None:
-                dest_name = self.nav_graph.get_vertex_name(self.selected_robot.destination)
-                dest_text = self.font.render(f"Destination: {dest_name}", True, self.BLACK)
-                self.screen.blit(dest_text, (20, 345))
-    
+            # Draw card background
+            pygame.draw.rect(panel_surface, self.CARD_BG, 
+                            (card_x, y_pos, card_width, card_height))
+            pygame.draw.rect(panel_surface, self.BORDER_COLOR, 
+                            (card_x, y_pos, card_width, card_height), 1)
+            
+            # Highlight selected robot
+            if robot == self.selected_robot:
+                pygame.draw.rect(panel_surface, self.YELLOW, 
+                                (card_x, y_pos, card_width, card_height), 2)
+            
+            # Draw robot color indicator
+            pygame.draw.circle(panel_surface, robot.color, (card_x + 30, y_pos + 40), 15)
+            
+            # Draw robot ID and status
+            id_text = self.bold_font.render(f"Robot {robot.id}", True, self.TEXT_COLOR)
+            panel_surface.blit(id_text, (card_x + 60, y_pos + 15))
+            
+            # Get status with first letter capitalized
+            status_display = robot.status.capitalize()
+            status_color = self.TEXT_COLOR
+            
+            # Use different colors for different statuses
+            if robot.status == self.STATUS_IDLE:
+                status_color = self.GRAY
+            elif robot.status == self.STATUS_MOVING:
+                status_color = self.GREEN
+            elif robot.status == self.STATUS_WAITING:
+                status_color = self.ORANGE
+            elif robot.status == self.STATUS_CHARGING:
+                status_color = self.BLUE
+            
+            # Draw position information
+            if robot.position is not None:
+                position_name = self.nav_graph.get_vertex_name(robot.position) or f"Node {robot.position}"
+                pos_text = self.font.render(f"At: {position_name}", True, self.TEXT_COLOR)
+                panel_surface.blit(pos_text, (card_x + 60, y_pos + 40))
+            
+            # Draw status and battery
+            status_text = self.font.render(f"Status: {status_display}", True, status_color)
+            panel_surface.blit(status_text, (card_x + 60, y_pos + 65))
+            
+            # Draw battery level with modern design
+            battery_color = self.TEXT_COLOR
+            if robot.battery_level < 20:
+                battery_color = self.RED
+            elif robot.battery_level < 50:
+                battery_color = self.ORANGE
+            
+            battery_text = self.font.render(f"Battery: {robot.battery_level:.1f}%", True, battery_color)
+            panel_surface.blit(battery_text, (card_x + card_width - 150, y_pos + 40))
+            
+            y_pos += 100
+            
+            # If we're running out of space, stop drawing robots
+            if y_pos > self.height - 60:
+                more_text = self.font.render(f"+ {len(self.robots) - self.robots.index(robot) - 1} more robots", 
+                                           True, self.TEXT_COLOR)
+                panel_surface.blit(more_text, (card_x + 60, y_pos))
+                break
+        
+        # Blit the panel to the screen
+        self.screen.blit(panel_surface, panel_rect)
+
     def draw_notification(self):
         """
-        Draw the current notification message.
+        Draw notification with dark mode styling.
         """
         if self.notification and pygame.time.get_ticks() < self.notification_time:
-            # Create a semi-transparent background
-            notification_surface = pygame.Surface((self.width // 3, 40))
-            notification_surface.set_alpha(200)
-            notification_surface.fill((50, 50, 50))
+            # Create notification surface with modern design
+            notification_width = self.width // 3
+            notification_height = 50
+            notification_surface = pygame.Surface((notification_width, notification_height))
+            
+            # Add gradient background
+            for y in range(notification_height):
+                alpha = int(255 * (1 - y / notification_height))
+                pygame.draw.line(notification_surface, (40, 40, 40), (0, y), (notification_width, y))
+            
+            notification_surface.set_alpha(230)
             
             # Position on the right side of the screen
-            x = self.width - notification_surface.get_width() - 20
+            x = self.width - notification_width - 20
             y = 20
             
+            # Draw notification with shadow
+            shadow_surface = pygame.Surface((notification_width + 4, notification_height + 4))
+            shadow_surface.fill(self.SHADOW_COLOR)
+            self.screen.blit(shadow_surface, (x + 2, y + 2))
             self.screen.blit(notification_surface, (x, y))
             
+            # Draw border
+            pygame.draw.rect(self.screen, self.BORDER_COLOR, 
+                            (x, y, notification_width, notification_height), 1)
+            
             # Render the text
-            text = self.font.render(self.notification, True, self.WHITE)
-            text_rect = text.get_rect(center=(x + notification_surface.get_width() // 2, y + notification_surface.get_height() // 2))
+            text = self.font.render(self.notification, True, self.TEXT_COLOR)
+            text_rect = text.get_rect(center=(x + notification_width // 2, y + notification_height // 2))
             self.screen.blit(text, text_rect)
-    
+
     def draw(self):
         """
         Draw the GUI.
@@ -657,115 +871,6 @@ class FleetGUI:
         
         # Update the display
         pygame.display.flip()
-
-    def draw_robot_panel(self):
-        """
-        Draw a panel showing detailed information about all robots.
-        """
-        # Create panel background
-        panel_rect = pygame.Rect(self.width - self.panel_width, 0, self.panel_width, self.height)
-        panel_surface = pygame.Surface((self.panel_width, self.height))
-        panel_surface.fill((240, 240, 240))  # Light gray background
-        panel_surface.set_alpha(230)  # Slightly transparent
-        
-        # Draw panel border
-        pygame.draw.rect(panel_surface, (180, 180, 180), (0, 0, self.panel_width, self.height), 2)
-        
-        # Draw panel title
-        title = self.title_font.render("Robot Status", True, self.BLACK)
-        title_rect = title.get_rect(center=(self.panel_width // 2, 30))
-        panel_surface.blit(title, title_rect)
-        
-        # Draw horizontal line below title
-        pygame.draw.line(panel_surface, (180, 180, 180), (20, 60), (self.panel_width - 20, 60), 2)
-        
-        # Count robots by status
-        status_counts = {}
-        for robot in self.robots:
-            status = robot.status
-            status_counts[status] = status_counts.get(status, 0) + 1
-        
-        # Draw status summary
-        y_pos = 80
-        summary_title = self.bold_font.render("Summary:", True, self.BLACK)
-        panel_surface.blit(summary_title, (20, y_pos))
-        y_pos += 40
-        
-        for status, count in status_counts.items():
-            status_text = self.font.render(f"{status.capitalize()}: {count}", True, self.BLACK)
-            panel_surface.blit(status_text, (40, y_pos))
-            y_pos += 30
-        
-        # Draw horizontal line below summary
-        y_pos += 10
-        pygame.draw.line(panel_surface, (180, 180, 180), (20, y_pos), (self.panel_width - 20, y_pos), 2)
-        y_pos += 20
-        
-        # Draw detailed robot information
-        details_title = self.bold_font.render("Robot Details:", True, self.BLACK)
-        panel_surface.blit(details_title, (20, y_pos))
-        y_pos += 40
-        
-        # Sort robots by status for better organization
-        sorted_robots = sorted(self.robots, key=lambda r: (r.status, r.id))
-        
-        for robot in sorted_robots:
-            # Draw robot color indicator
-            pygame.draw.circle(panel_surface, robot.color, (30, y_pos + 12), 10)
-            
-            # Highlight selected robot
-            if robot == self.selected_robot:
-                pygame.draw.rect(panel_surface, self.YELLOW, (45, y_pos, self.panel_width - 65, 60), 2)
-            
-            # Draw robot ID and status
-            id_text = self.bold_font.render(f"Robot {robot.id}", True, self.BLACK)
-            panel_surface.blit(id_text, (50, y_pos))
-            
-            # Get status with first letter capitalized
-            status_display = robot.status.capitalize()
-            status_color = self.BLACK
-            
-            # Use different colors for different statuses
-            if robot.status == self.STATUS_IDLE:
-                status_color = self.GRAY
-            elif robot.status == self.STATUS_MOVING:
-                status_color = self.GREEN
-            elif robot.status == self.STATUS_WAITING:
-                status_color = self.ORANGE
-            elif robot.status == self.STATUS_CHARGING:
-                status_color = self.BLUE
-            
-            # Draw position information if available
-            if robot.position is not None:
-                position_name = self.nav_graph.get_vertex_name(robot.position) or f"Node {robot.position}"
-                pos_text = self.font.render(f"At: {position_name}", True, self.BLACK)
-                panel_surface.blit(pos_text, (50, y_pos + 25))
-            
-            # Draw status on the right side
-            status_text = self.font.render(f"Status: {status_display}", True, status_color)
-            panel_surface.blit(status_text, (50, y_pos + 50))
-            
-            # Draw battery level on the right side
-            battery_color = self.BLACK
-            if robot.battery_level < 20:
-                battery_color = self.RED
-            elif robot.battery_level < 50:
-                battery_color = self.ORANGE
-            
-            battery_text = self.font.render(f"Battery: {robot.battery_level:.1f}%", True, battery_color)
-            panel_surface.blit(battery_text, (self.panel_width - 200, y_pos + 25))
-            
-            # Add more space between robot entries
-            y_pos += 80
-            
-            # If we're running out of space, stop drawing robots
-            if y_pos > self.height - 60:
-                more_text = self.font.render(f"+ {len(self.robots) - self.robots.index(robot) - 1} more robots", True, self.BLACK)
-                panel_surface.blit(more_text, (50, y_pos))
-                break
-        
-        # Blit the panel to the screen
-        self.screen.blit(panel_surface, panel_rect)
 
     def handle_events(self):
         """
@@ -869,15 +974,15 @@ class FleetGUI:
         
     def run(self, fps=60):
         """
-        Run the main loop of the GUI.
-        
-        Args:
-            fps (int): Frames per second.
+        Run the main loop with animation updates.
         """
         while True:
+            # Update animation time
+            self.animation_time += 1
+            
             event_info = self.handle_events()
             if event_info:
                 print(f"Event: {event_info}")
                 
             self.draw()
-            self.clock.tick(fps) 
+            self.clock.tick(fps)
