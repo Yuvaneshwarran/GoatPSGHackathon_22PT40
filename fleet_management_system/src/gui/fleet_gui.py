@@ -120,6 +120,10 @@ class FleetGUI:
         self.robot_image = pygame.image.load("/home/yuvanesh/Desktop/Github/GoatPSGHackathon_22PT40/fleet_management_system/src/gui/robot.png")  # Update with the correct path to your image
         self.robot_image = pygame.transform.scale(self.robot_image, (self.robot_radius * 2, self.robot_radius * 2))  # Scale the image to fit the robot size
         
+        # Load thunderbolt image
+        self.thunderbolt_image = pygame.image.load("/home/yuvanesh/Desktop/Github/GoatPSGHackathon_22PT40/fleet_management_system/src/gui/thunderbolt_image.png")  # Update with the correct path
+        self.thunderbolt_image = pygame.transform.scale(self.thunderbolt_image, (25, 50))  # Scale to desired size
+        
     def set_nav_graph(self, nav_graph):
         """
         Set the navigation graph to be visualized.
@@ -198,6 +202,18 @@ class FleetGUI:
         y = -(screen_y - self.offset_y) / self.scale_factor  # Y is inverted in screen space
         return (x, y)
         
+    def draw_thunderbolt(self, position):
+        """Draw a simple thunderbolt shape at the given position."""
+        points = [
+            (position[0], position[1]),  # Top point
+            (position[0] - 10, position[1] + 20),  # Bottom left
+            (position[0] + 5, position[1] + 20),  # Middle right
+            (position[0] - 5, position[1] + 40),  # Bottom middle
+            (position[0] + 10, position[1] + 20),  # Bottom right
+            (position[0], position[1] + 20)  # Back to top
+        ]
+        pygame.draw.polygon(self.screen, self.YELLOW, points)  # Draw thunderbolt in yellow
+
     def draw_vertex(self, vertex_index):
         """
         Draw a vertex with modern styling.
@@ -215,7 +231,7 @@ class FleetGUI:
         # Determine vertex type
         vertex_type = self.VERTEX_NORMAL
         if len(vertex) > 2 and isinstance(vertex[2], dict):
-            if vertex[2].get('charger', False):
+            if vertex[2].get('is_charger', False):
                 vertex_type = self.VERTEX_CHARGER
             elif 'name' in vertex[2] and vertex[2]['name']:
                 vertex_type = self.VERTEX_NAMED
@@ -225,20 +241,14 @@ class FleetGUI:
         
         # Draw vertex with modern styling
         if vertex_type == self.VERTEX_CHARGER:
-            # Charging station with modern design
+            # Charging station - Use a distinct color (e.g., blue)
             pygame.draw.circle(self.screen, self.BLUE, screen_pos, self.vertex_radius)
-            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 8)
+            pygame.draw.circle(self.screen, self.WHITE, screen_pos, self.vertex_radius - 6)  # Thicker border
             
-            # Draw lightning bolt with gradient
-            points = [
-                (screen_pos[0], screen_pos[1] - self.vertex_radius//2),
-                (screen_pos[0] - self.vertex_radius//3, screen_pos[1]),
-                (screen_pos[0], screen_pos[1] - self.vertex_radius//4),
-                (screen_pos[0], screen_pos[1] + self.vertex_radius//2),
-                (screen_pos[0] + self.vertex_radius//3, screen_pos[1]),
-                (screen_pos[0], screen_pos[1] + self.vertex_radius//4)
-            ]
-            pygame.draw.polygon(self.screen, self.DARK_BLUE, points)
+            # Draw the thunderbolt image
+            thunderbolt_pos = (screen_pos[0] - self.thunderbolt_image.get_width() // 2 + 40, 
+                               screen_pos[1] - self.thunderbolt_image.get_height() // 2 - 50)
+            self.screen.blit(self.thunderbolt_image, thunderbolt_pos)
             
         elif vertex_type == self.VERTEX_NAMED:
             # Named location with modern design
