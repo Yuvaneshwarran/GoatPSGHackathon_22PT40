@@ -94,16 +94,17 @@ class FleetManager:
                 path_clear = self.is_path_clear(robot.path, robot)
                 
                 if path_clear:
-                    # If the original path is clear, let the robot move
-                    next_lane = (robot.path[0], robot.path[1])
-                    # Reserve the lane and let the robot move
-                    self.reserve_lane(next_lane, robot)
+                    # If the original path is clear, reserve the entire path and let the robot move
+                    for j in range(len(robot.path) - 1):
+                        next_lane = (robot.path[j], robot.path[j+1])
+                        self.reserve_lane(next_lane, robot)
                     
                     # Set up the current_lane for the robot
                     robot.current_lane = [robot.path[0], robot.path[1]]
                     
                     robot.status = robot.STATUS_MOVING
                     print(f"[WAITING] Robot {robot.id} original path is now clear, resuming movement from {vertex} to {robot.destination}")
+                    print(f"[LANES] Robot {robot.id} reserved entire path: {robot.path}")
                     waiting_list.pop(i)
                     continue  # Don't increment i since we removed an element
                 
@@ -114,15 +115,18 @@ class FleetManager:
                 if alt_path and alt_path != robot.path:
                     # Found a clear alternative path
                     robot.path = alt_path
-                    next_lane = (robot.path[0], robot.path[1])
-                    # Reserve the lane and let the robot move
-                    self.reserve_lane(next_lane, robot)
+                    
+                    # Reserve the entire alternative path
+                    for j in range(len(robot.path) - 1):
+                        next_lane = (robot.path[j], robot.path[j+1])
+                        self.reserve_lane(next_lane, robot)
                     
                     # Set up the current_lane for the robot
                     robot.current_lane = [robot.path[0], robot.path[1]]
                     
                     robot.status = robot.STATUS_MOVING
                     print(f"[WAITING] Robot {robot.id} found alternative path, resuming movement from {vertex} to {robot.destination}")
+                    print(f"[LANES] Robot {robot.id} reserved entire alternative path: {robot.path}")
                     waiting_list.pop(i)
                     continue  # Don't increment i since we removed an element
                 
@@ -141,7 +145,7 @@ class FleetManager:
         Args:
             robot: The robot whose state changed.
         """
-        # If the robot just completed a lane, release the reservation
+        # If the robot just completed a task or is idle, release all its reservations
         if robot.status == robot.STATUS_TASK_COMPLETE or robot.status == robot.STATUS_IDLE:
             lanes_released = False
             for lane, (res_robot, _) in list(self.reserved_lanes.items()):
@@ -154,7 +158,25 @@ class FleetManager:
             if lanes_released:
                 print(f"[LANES] Robot {robot.id} released lanes, checking waiting robots")
                 self.process_waiting_robots()
-            
+        
+        # If the robot is moving and has reached a new vertex, update reservations
+        elif robot.status == robot.STATUS_MOVING and robot.path and len(robot.path) > 1:
+            # If the robot has moved to a new vertex, release only the completed lane
+            if robot.current_lane and robot.position == robot.current_lane[1]:
+                # The robot has completed a lane, release it
+                completed_lane = tuple(robot.current_lane)
+                if completed_lane in self.reserved_lanes:
+                    print(f"[LANES] Robot {robot.id} completed lane {completed_lane}")
+                    del self.reserved_lanes[completed_lane]
+                
+                # Reserve the entire remaining path
+                if len(robot.path) > 1:
+                    print(f"[LANES] Robot {robot.id} reserving remaining path: {robot.path}")
+                    # Reserve all remaining lanes in the path
+                    for i in range(len(robot.path) - 1):
+                        next_lane = (robot.path[i], robot.path[i+1])
+                        self.reserve_lane(next_lane, robot)
+        
         # If the robot is waiting, add it to the waiting list
         if robot.status == robot.STATUS_WAITING:
             if robot.position not in self.waiting_robots:
@@ -184,9 +206,41 @@ class FleetManager:
         Returns:
             bool: True if the lane is free, False otherwise.
         """
+        # Check if the lane is already reserved
         if lane in self.reserved_lanes:
             reserved_robot, _ = self.reserved_lanes[lane]
             return reserved_robot == requesting_robot
+        
+        # Check for opposite direction traffic (to prevent head-on collisions)
+        opposite_lane = (lane[1], lane[0])
+        if opposite_lane in self.reserved_lanes:
+            print(f"[COLLISION] Lane {opposite_lane} is reserved in the opposite direction")
+            return False
+        
+        # Check for robots currently moving through this lane
+        for robot in self.robots:
+            if robot == requesting_robot:
+                continue
+            
+            # If the robot is moving and using this lane
+            if robot.status == robot.STATUS_MOVING and robot.current_lane:
+                robot_lane = tuple(robot.current_lane)
+                
+                # Check for direct lane conflict
+                if robot_lane == lane:
+                    print(f"[COLLISION] Robot {robot.id} is already using lane {lane}")
+                    return False
+                
+                # Check for opposite direction conflict
+                if robot_lane == opposite_lane:
+                    print(f"[COLLISION] Robot {robot.id} is using lane {opposite_lane} (opposite direction)")
+                    return False
+                
+                # Check for crossing paths
+                if robot_lane[0] == lane[1] or robot_lane[1] == lane[0]:
+                    print(f"[COLLISION] Robot {robot.id}'s path crosses with requested lane {lane}")
+                    return False
+        
         return True
 
     def reserve_lane(self, lane, robot):
@@ -197,7 +251,25 @@ class FleetManager:
             lane (tuple): The lane to reserve, as (from_vertex, to_vertex).
             robot: The robot reserving the lane.
         """
+        # Check if the lane is already reserved by another robot
+        if lane in self.reserved_lanes:
+            reserved_robot, _ = self.reserved_lanes[lane]
+            if reserved_robot != robot:
+                print(f"[WARNING] Lane {lane} is already reserved by robot {reserved_robot.id}")
+                return False
+        
+        # Check for opposite direction traffic
+        opposite_lane = (lane[1], lane[0])
+        if opposite_lane in self.reserved_lanes:
+            reserved_robot, _ = self.reserved_lanes[opposite_lane]
+            if reserved_robot != robot:
+                print(f"[WARNING] Lane {opposite_lane} is reserved in the opposite direction by robot {reserved_robot.id}")
+                return False
+        
+        # Reserve the lane
         self.reserved_lanes[lane] = (robot, time.time())
+        print(f"[LANES] Robot {robot.id} reserved lane {lane}")
+        return True
 
     def find_path(self, start, end):
         """
@@ -344,27 +416,8 @@ class FleetManager:
             print(f"Robot {robot.id} is waiting at {robot.position} - path is not clear")
             return True
         
-        # Check if the first lane is free
-        if len(path) > 1:
-            first_lane = (path[0], path[1])
-            lane_free = self.is_lane_free(first_lane, robot)
-            
-            if not lane_free:
-                # Set the robot to waiting status
-                robot.status = robot.STATUS_WAITING
-                robot.current_lane = None  # Clear current lane since we're waiting
-                
-                # Add to waiting list
-                if robot.position not in self.waiting_robots:
-                    self.waiting_robots[robot.position] = []
-                if robot not in self.waiting_robots[robot.position]:
-                    self.waiting_robots[robot.position].append(robot)
-                
-                print(f"Robot {robot.id} is waiting at {robot.position} for lane {first_lane} to become free")
-                return True
-            
-            # Reserve the first lane
-            self.reserve_lane(first_lane, robot)
+        # If the path is clear, reserve the entire path
+        self.reserve_path(path, robot)
         
         # Assign the task to the robot
         robot.assign_task(destination, path)
@@ -380,7 +433,25 @@ class FleetManager:
         self.process_waiting_robots()
         
         return True
+
+    def reserve_path(self, path, robot):
+        """
+        Reserve all lanes in a path for a robot.
         
+        Args:
+            path (list): List of vertex indices representing the path.
+            robot: The robot reserving the path.
+        """
+        if not path or len(path) < 2:
+            return
+        
+        print(f"[LANES] Robot {robot.id} reserving entire path: {path}")
+        
+        # Reserve each lane in the path
+        for i in range(len(path) - 1):
+            lane = (path[i], path[i+1])
+            self.reserve_lane(lane, robot)
+
     def spawn_robot(self, position, color=None):
         """
         Spawn a new robot at the given position.

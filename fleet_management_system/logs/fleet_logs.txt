@@ -175,3 +175,371 @@
 2025-03-30 04:05:14 - INFO - TASK_ASSIGNED: {'robot_id': '192fbd', 'from': 1, 'to': 6, 'destination_name': 'm4'}
 2025-03-30 04:05:16 - INFO - ROBOT_SELECTED: {'robot_id': '72b94d', 'position': 9, 'status': 'idle'}
 2025-03-30 04:05:17 - INFO - TASK_ASSIGNED: {'robot_id': '72b94d', 'from': 9, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 16:49:39 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 16:49:40 - INFO - ROBOT_SPAWNED: {'robot_id': 'b2de60', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 16:49:42 - INFO - ROBOT_SPAWNED: {'robot_id': 'eb742a', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 16:49:43 - INFO - ROBOT_SPAWNED: {'robot_id': 'd58ade', 'position': 7, 'vertex_name': 'm5'}
+2025-03-30 16:49:44 - INFO - ROBOT_SPAWNED: {'robot_id': 'eeebd0', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 16:49:46 - INFO - ROBOT_SELECTED: {'robot_id': 'b2de60', 'position': 10, 'status': 'idle'}
+2025-03-30 16:49:47 - INFO - TASK_ASSIGNED: {'robot_id': 'b2de60', 'from': 10, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 16:49:51 - INFO - ROBOT_SELECTED: {'robot_id': 'eeebd0', 'position': 6, 'status': 'idle'}
+2025-03-30 16:49:52 - INFO - TASK_ASSIGNED: {'robot_id': 'eeebd0', 'from': 6, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 16:53:32 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 16:53:34 - INFO - ROBOT_SPAWNED: {'robot_id': '0a1f99', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 16:53:35 - INFO - ROBOT_SPAWNED: {'robot_id': '620c16', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 16:53:36 - INFO - ROBOT_SPAWNED: {'robot_id': 'bd4ebc', 'position': 9, 'vertex_name': 'm7'}
+2025-03-30 16:53:38 - INFO - ROBOT_SPAWNED: {'robot_id': 'c993af', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 16:53:39 - INFO - ROBOT_SELECTED: {'robot_id': '0a1f99', 'position': 10, 'status': 'idle'}
+2025-03-30 16:53:40 - INFO - TASK_ASSIGNED: {'robot_id': '0a1f99', 'from': 10, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 16:53:41 - INFO - ROBOT_SELECTED: {'robot_id': '620c16', 'position': 6, 'status': 'idle'}
+2025-03-30 16:53:43 - INFO - TASK_ASSIGNED: {'robot_id': '620c16', 'from': 6, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 16:54:00 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 16:54:01 - INFO - ROBOT_SPAWNED: {'robot_id': 'b74727', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 16:54:02 - INFO - ROBOT_SPAWNED: {'robot_id': '05a234', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 16:54:04 - INFO - ROBOT_SPAWNED: {'robot_id': '402b55', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 16:54:06 - INFO - ROBOT_SELECTED: {'robot_id': 'b74727', 'position': 10, 'status': 'idle'}
+2025-03-30 16:54:07 - INFO - TASK_ASSIGNED: {'robot_id': 'b74727', 'from': 10, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 16:54:09 - INFO - ROBOT_SELECTED: {'robot_id': '05a234', 'position': 4, 'status': 'idle'}
+2025-03-30 16:54:10 - INFO - TASK_ASSIGNED: {'robot_id': '05a234', 'from': 4, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 16:56:56 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 16:56:57 - INFO - ROBOT_SPAWNED: {'robot_id': '37ea90', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 16:56:57 - INFO - ROBOT_SPAWNED: {'robot_id': 'c58db0', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 16:56:59 - INFO - ROBOT_SPAWNED: {'robot_id': '79a256', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 16:57:01 - INFO - ROBOT_SELECTED: {'robot_id': '37ea90', 'position': 10, 'status': 'idle'}
+2025-03-30 16:57:02 - INFO - TASK_ASSIGNED: {'robot_id': '37ea90', 'from': 10, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 16:57:03 - INFO - ROBOT_SELECTED: {'robot_id': 'c58db0', 'position': 4, 'status': 'idle'}
+2025-03-30 16:57:04 - INFO - TASK_ASSIGNED: {'robot_id': 'c58db0', 'from': 4, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 16:57:25 - INFO - ROBOT_SPAWNED: {'robot_id': '066c5a', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 16:57:26 - INFO - ROBOT_SPAWNED: {'robot_id': 'dc7435', 'position': 13, 'vertex_name': 'm8'}
+2025-03-30 16:57:27 - INFO - ROBOT_SELECTED: {'robot_id': '066c5a', 'position': 10, 'status': 'idle'}
+2025-03-30 16:57:28 - INFO - TASK_ASSIGNED: {'robot_id': '066c5a', 'from': 10, 'to': 3, 'destination_name': 'm9'}
+2025-03-30 16:57:29 - INFO - ROBOT_SELECTED: {'robot_id': 'dc7435', 'position': 13, 'status': 'idle'}
+2025-03-30 16:57:31 - INFO - TASK_ASSIGNED: {'robot_id': 'dc7435', 'from': 13, 'to': 1, 'destination_name': 'm10'}
+2025-03-30 16:57:38 - INFO - ROBOT_SELECTED: {'robot_id': '066c5a', 'position': 3, 'status': 'task_complete'}
+2025-03-30 16:57:40 - INFO - TASK_ASSIGNED: {'robot_id': '066c5a', 'from': 3, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 16:58:12 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 16:58:13 - INFO - ROBOT_SPAWNED: {'robot_id': '93b687', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 16:58:14 - INFO - ROBOT_SPAWNED: {'robot_id': '618601', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 16:58:15 - INFO - ROBOT_SPAWNED: {'robot_id': 'e531c1', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 16:58:16 - INFO - ROBOT_SELECTED: {'robot_id': '93b687', 'position': 10, 'status': 'idle'}
+2025-03-30 16:58:17 - INFO - TASK_ASSIGNED: {'robot_id': '93b687', 'from': 10, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 16:58:27 - INFO - ROBOT_SELECTED: {'robot_id': '618601', 'position': 4, 'status': 'idle'}
+2025-03-30 16:58:29 - INFO - TASK_ASSIGNED: {'robot_id': '618601', 'from': 4, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 16:59:12 - INFO - ROBOT_SELECTED: {'robot_id': 'e531c1', 'position': 6, 'status': 'idle'}
+2025-03-30 16:59:14 - INFO - TASK_ASSIGNED: {'robot_id': 'e531c1', 'from': 6, 'to': 12, 'destination_name': 'm6'}
+2025-03-30 16:59:31 - INFO - ROBOT_SELECTED: {'robot_id': '618601', 'position': 11, 'status': 'task_complete'}
+2025-03-30 16:59:33 - INFO - TASK_ASSIGNED: {'robot_id': '618601', 'from': 11, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 16:59:34 - INFO - ROBOT_SELECTED: {'robot_id': 'e531c1', 'position': 12, 'status': 'task_complete'}
+2025-03-30 16:59:35 - INFO - TASK_ASSIGNED: {'robot_id': 'e531c1', 'from': 12, 'to': 6, 'destination_name': 'm4'}
+2025-03-30 16:59:41 - INFO - ROBOT_SELECTED: {'robot_id': '93b687', 'position': 5, 'status': 'task_complete'}
+2025-03-30 16:59:44 - INFO - TASK_ASSIGNED: {'robot_id': '93b687', 'from': 5, 'to': 3, 'destination_name': 'm9'}
+2025-03-30 16:59:45 - INFO - ROBOT_SELECTED: {'robot_id': 'e531c1', 'position': 12, 'status': 'waiting'}
+2025-03-30 16:59:49 - INFO - TASK_ASSIGNED: {'robot_id': 'e531c1', 'from': 12, 'to': 8, 'destination_name': 'V8'}
+2025-03-30 16:59:52 - INFO - ROBOT_SELECTED: {'robot_id': 'e531c1', 'position': 8, 'status': 'task_complete'}
+2025-03-30 16:59:53 - INFO - TASK_ASSIGNED: {'robot_id': 'e531c1', 'from': 8, 'to': 1, 'destination_name': 'm10'}
+2025-03-30 17:00:02 - INFO - ROBOT_SELECTED: {'robot_id': '93b687', 'position': 3, 'status': 'task_complete'}
+2025-03-30 17:00:03 - INFO - ROBOT_SELECTED: {'robot_id': '93b687', 'position': 3, 'status': 'task_complete'}
+2025-03-30 17:00:06 - INFO - ROBOT_SELECTED: {'robot_id': '93b687', 'position': 3, 'status': 'task_complete'}
+2025-03-30 17:00:09 - INFO - TASK_ASSIGNED: {'robot_id': '93b687', 'from': 3, 'to': 10, 'destination_name': 'm1'}
+2025-03-30 17:08:01 - INFO - SYSTEM_START: {'graph_file': 'data/nav_graph_2.json', 'building': '', 'level': '', 'vertices': 0, 'lanes': 0}
+2025-03-30 17:08:56 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:09:02 - INFO - ROBOT_SPAWNED: {'robot_id': 'f62b88', 'position': 11, 'vertex_name': 'V11'}
+2025-03-30 17:09:03 - INFO - ROBOT_SELECTED: {'robot_id': 'f62b88', 'position': 11, 'status': 'idle'}
+2025-03-30 17:09:08 - INFO - TASK_ASSIGNED: {'robot_id': 'f62b88', 'from': 11, 'to': 12, 'destination_name': 'V12'}
+2025-03-30 17:09:19 - INFO - ROBOT_SPAWNED: {'robot_id': 'eb529c', 'position': 8, 'vertex_name': 'V8'}
+2025-03-30 17:09:22 - INFO - ROBOT_SELECTED: {'robot_id': 'f62b88', 'position': 12, 'status': 'task_complete'}
+2025-03-30 17:09:24 - INFO - TASK_ASSIGNED: {'robot_id': 'f62b88', 'from': 12, 'to': 1, 'destination_name': 'V1'}
+2025-03-30 17:09:25 - INFO - ROBOT_SELECTED: {'robot_id': 'eb529c', 'position': 8, 'status': 'idle'}
+2025-03-30 17:09:26 - INFO - TASK_ASSIGNED: {'robot_id': 'eb529c', 'from': 8, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 17:09:54 - INFO - ROBOT_SELECTED: {'robot_id': 'f62b88', 'position': 1, 'status': 'task_complete'}
+2025-03-30 17:09:55 - INFO - TASK_ASSIGNED: {'robot_id': 'f62b88', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 17:09:56 - INFO - ROBOT_SELECTED: {'robot_id': 'eb529c', 'position': 0, 'status': 'task_complete'}
+2025-03-30 17:09:58 - INFO - TASK_ASSIGNED: {'robot_id': 'eb529c', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:10:02 - INFO - ROBOT_CHARGING: {'robot_id': 'f62b88', 'position': 6, 'battery_level': 86.02272198200217}
+2025-03-30 17:10:02 - INFO - ROBOT_SELECTED: {'robot_id': 'f62b88', 'position': 6, 'status': 'charging'}
+2025-03-30 17:10:06 - INFO - TASK_ASSIGNED: {'robot_id': 'f62b88', 'from': 6, 'to': 4, 'destination_name': 'V4'}
+2025-03-30 17:10:27 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:10:31 - INFO - ROBOT_SPAWNED: {'robot_id': 'e29e19', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 17:10:32 - INFO - ROBOT_SPAWNED: {'robot_id': '783287', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 17:10:33 - INFO - ROBOT_SELECTED: {'robot_id': '783287', 'position': 1, 'status': 'idle'}
+2025-03-30 17:10:34 - INFO - TASK_ASSIGNED: {'robot_id': '783287', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 17:10:36 - INFO - ROBOT_SELECTED: {'robot_id': 'e29e19', 'position': 0, 'status': 'idle'}
+2025-03-30 17:10:37 - INFO - TASK_ASSIGNED: {'robot_id': 'e29e19', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:10:41 - INFO - ROBOT_CHARGING: {'robot_id': '783287', 'position': 6, 'battery_level': 96.40850582122795}
+2025-03-30 17:10:44 - INFO - ROBOT_SELECTED: {'robot_id': '783287', 'position': 6, 'status': 'idle'}
+2025-03-30 17:10:45 - INFO - TASK_ASSIGNED: {'robot_id': '783287', 'from': 6, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:39:46 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:39:49 - INFO - ROBOT_SPAWNED: {'robot_id': '05dd65', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 17:39:50 - INFO - ROBOT_SPAWNED: {'robot_id': 'fae279', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 17:39:52 - INFO - ROBOT_SELECTED: {'robot_id': '05dd65', 'position': 0, 'status': 'idle'}
+2025-03-30 17:39:53 - INFO - TASK_ASSIGNED: {'robot_id': '05dd65', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:39:55 - INFO - ROBOT_SELECTED: {'robot_id': 'fae279', 'position': 1, 'status': 'idle'}
+2025-03-30 17:39:57 - INFO - TASK_ASSIGNED: {'robot_id': 'fae279', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 17:40:03 - INFO - ROBOT_CHARGING: {'robot_id': 'fae279', 'position': 6, 'battery_level': 95.99978325366968}
+2025-03-30 17:40:08 - INFO - ROBOT_SELECTED: {'robot_id': 'fae279', 'position': 6, 'status': 'idle'}
+2025-03-30 17:40:09 - INFO - TASK_ASSIGNED: {'robot_id': 'fae279', 'from': 6, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:40:19 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:40:20 - INFO - ROBOT_SPAWNED: {'robot_id': '8bd840', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 17:40:21 - INFO - ROBOT_SPAWNED: {'robot_id': '0d9207', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 17:40:23 - INFO - ROBOT_SELECTED: {'robot_id': '0d9207', 'position': 0, 'status': 'idle'}
+2025-03-30 17:40:24 - INFO - TASK_ASSIGNED: {'robot_id': '0d9207', 'from': 0, 'to': 2, 'destination_name': 'V2'}
+2025-03-30 17:40:25 - INFO - ROBOT_SELECTED: {'robot_id': '8bd840', 'position': 1, 'status': 'idle'}
+2025-03-30 17:40:27 - INFO - TASK_ASSIGNED: {'robot_id': '8bd840', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 17:40:33 - INFO - ROBOT_CHARGING: {'robot_id': '8bd840', 'position': 6, 'battery_level': 96.03092279434199}
+2025-03-30 17:40:35 - INFO - ROBOT_SELECTED: {'robot_id': '8bd840', 'position': 6, 'status': 'idle'}
+2025-03-30 17:40:38 - INFO - TASK_ASSIGNED: {'robot_id': '8bd840', 'from': 6, 'to': 4, 'destination_name': 'V4'}
+2025-03-30 17:40:46 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:40:50 - INFO - ROBOT_SPAWNED: {'robot_id': '569c69', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 17:40:51 - INFO - ROBOT_SPAWNED: {'robot_id': '83446e', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 17:40:57 - INFO - ROBOT_SELECTED: {'robot_id': '569c69', 'position': 0, 'status': 'idle'}
+2025-03-30 17:40:59 - INFO - TASK_ASSIGNED: {'robot_id': '569c69', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:41:03 - INFO - ROBOT_SELECTED: {'robot_id': '83446e', 'position': 1, 'status': 'idle'}
+2025-03-30 17:41:04 - INFO - TASK_ASSIGNED: {'robot_id': '83446e', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 17:41:10 - INFO - ROBOT_CHARGING: {'robot_id': '83446e', 'position': 6, 'battery_level': 95.37489874362939}
+2025-03-30 17:41:11 - INFO - ROBOT_SELECTED: {'robot_id': '83446e', 'position': 6, 'status': 'charging'}
+2025-03-30 17:41:18 - INFO - TASK_ASSIGNED: {'robot_id': '83446e', 'from': 6, 'to': 4, 'destination_name': 'V4'}
+2025-03-30 17:47:26 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 17:47:34 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:47:41 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_3.json', 'building': 'new_site', 'level': 'l1', 'vertices': 7, 'lanes': 14}
+2025-03-30 17:49:45 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 17:49:47 - INFO - ROBOT_SPAWNED: {'robot_id': '1fabe5', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 17:49:48 - INFO - ROBOT_SPAWNED: {'robot_id': 'd037f3', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 17:49:49 - INFO - ROBOT_SELECTED: {'robot_id': '1fabe5', 'position': 0, 'status': 'idle'}
+2025-03-30 17:49:50 - INFO - TASK_ASSIGNED: {'robot_id': '1fabe5', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 17:49:53 - INFO - ROBOT_SELECTED: {'robot_id': 'd037f3', 'position': 1, 'status': 'idle'}
+2025-03-30 17:49:54 - INFO - TASK_ASSIGNED: {'robot_id': 'd037f3', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 17:50:01 - INFO - ROBOT_CHARGING: {'robot_id': 'd037f3', 'position': 6, 'battery_level': 95.99995753765107}
+2025-03-30 17:50:04 - INFO - ROBOT_SELECTED: {'robot_id': 'd037f3', 'position': 6, 'status': 'idle'}
+2025-03-30 17:50:05 - INFO - TASK_ASSIGNED: {'robot_id': 'd037f3', 'from': 6, 'to': 4, 'destination_name': 'V4'}
+2025-03-30 17:50:31 - INFO - ROBOT_SELECTED: {'robot_id': 'd037f3', 'position': 4, 'status': 'task_complete'}
+2025-03-30 17:52:10 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 18:06:00 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 18:06:02 - INFO - ROBOT_SPAWNED: {'robot_id': '8f394f', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 18:06:03 - INFO - ROBOT_SPAWNED: {'robot_id': '7b4138', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 18:06:04 - INFO - ROBOT_SELECTED: {'robot_id': '8f394f', 'position': 0, 'status': 'idle'}
+2025-03-30 18:06:06 - INFO - TASK_ASSIGNED: {'robot_id': '8f394f', 'from': 0, 'to': 2, 'destination_name': 'V2'}
+2025-03-30 18:06:07 - INFO - ROBOT_SELECTED: {'robot_id': '7b4138', 'position': 1, 'status': 'idle'}
+2025-03-30 18:06:08 - INFO - TASK_ASSIGNED: {'robot_id': '7b4138', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 18:06:16 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_2.json', 'building': 'new_site', 'level': 'l0', 'vertices': 14, 'lanes': 30}
+2025-03-30 18:06:18 - INFO - ROBOT_SPAWNED: {'robot_id': 'a4902b', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 18:06:18 - INFO - ROBOT_SPAWNED: {'robot_id': '30dec3', 'position': 1, 'vertex_name': 'V1'}
+2025-03-30 18:06:20 - INFO - ROBOT_SELECTED: {'robot_id': 'a4902b', 'position': 0, 'status': 'idle'}
+2025-03-30 18:06:22 - INFO - TASK_ASSIGNED: {'robot_id': 'a4902b', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 18:06:23 - INFO - ROBOT_SELECTED: {'robot_id': '30dec3', 'position': 1, 'status': 'idle'}
+2025-03-30 18:06:24 - INFO - TASK_ASSIGNED: {'robot_id': '30dec3', 'from': 1, 'to': 6, 'destination_name': 'm1'}
+2025-03-30 18:06:31 - INFO - ROBOT_CHARGING: {'robot_id': '30dec3', 'position': 6, 'battery_level': 96.07150361537924}
+2025-03-30 18:06:34 - INFO - ROBOT_SELECTED: {'robot_id': '30dec3', 'position': 6, 'status': 'idle'}
+2025-03-30 18:06:35 - INFO - TASK_ASSIGNED: {'robot_id': '30dec3', 'from': 6, 'to': 4, 'destination_name': 'V4'}
+2025-03-30 18:07:08 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 18:07:13 - INFO - ROBOT_SPAWNED: {'robot_id': 'f371ae', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 18:07:19 - INFO - ROBOT_SPAWNED: {'robot_id': '324acd', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 18:07:26 - INFO - ROBOT_SELECTED: {'robot_id': 'f371ae', 'position': 1, 'status': 'idle'}
+2025-03-30 18:07:31 - INFO - TASK_ASSIGNED: {'robot_id': 'f371ae', 'from': 1, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 18:07:37 - INFO - ROBOT_SELECTED: {'robot_id': '324acd', 'position': 6, 'status': 'idle'}
+2025-03-30 18:07:38 - INFO - TASK_ASSIGNED: {'robot_id': '324acd', 'from': 6, 'to': 12, 'destination_name': 'm6'}
+2025-03-30 18:07:59 - INFO - ROBOT_SPAWNED: {'robot_id': 'd6c2dd', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 18:19:38 - INFO - LOW_BATTERY_CHARGING: {'robot_id': '324acd', 'battery_level': 9.999839115143319, 'charger': 'm7'}
+2025-03-30 18:19:45 - INFO - ROBOT_CHARGING: {'robot_id': '324acd', 'position': 9, 'battery_level': 6.649259495735665}
+2025-03-30 20:04:18 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 20:04:19 - INFO - ROBOT_SPAWNED: {'robot_id': '41f1c7', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 20:04:21 - INFO - ROBOT_SPAWNED: {'robot_id': 'e9e5f8', 'position': 5, 'vertex_name': 'V5'}
+2025-03-30 20:04:22 - INFO - ROBOT_SPAWNED: {'robot_id': '3915ff', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 20:04:23 - INFO - ROBOT_SELECTED: {'robot_id': '41f1c7', 'position': 10, 'status': 'idle'}
+2025-03-30 20:04:24 - INFO - TASK_ASSIGNED: {'robot_id': '41f1c7', 'from': 10, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 20:04:26 - INFO - ROBOT_SELECTED: {'robot_id': 'e9e5f8', 'position': 5, 'status': 'idle'}
+2025-03-30 20:04:27 - INFO - TASK_ASSIGNED: {'robot_id': 'e9e5f8', 'from': 5, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 20:04:29 - INFO - ROBOT_SELECTED: {'robot_id': '3915ff', 'position': 6, 'status': 'idle'}
+2025-03-30 20:04:30 - INFO - TASK_ASSIGNED: {'robot_id': '3915ff', 'from': 6, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 20:04:34 - INFO - ROBOT_SELECTED: {'robot_id': 'e9e5f8', 'position': 0, 'status': 'task_complete'}
+2025-03-30 20:04:37 - INFO - TASK_ASSIGNED: {'robot_id': 'e9e5f8', 'from': 0, 'to': 6, 'destination_name': 'm4'}
+2025-03-30 20:56:30 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 20:56:32 - INFO - ROBOT_SPAWNED: {'robot_id': 'af8b90', 'position': 12, 'vertex_name': 'm6'}
+2025-03-30 20:56:34 - INFO - ROBOT_SPAWNED: {'robot_id': '04397b', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 20:56:45 - INFO - ROBOT_SELECTED: {'robot_id': '04397b', 'position': 11, 'status': 'idle'}
+2025-03-30 20:56:51 - INFO - TASK_ASSIGNED: {'robot_id': '04397b', 'from': 11, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 20:56:52 - INFO - ROBOT_SELECTED: {'robot_id': 'af8b90', 'position': 12, 'status': 'idle'}
+2025-03-30 20:56:53 - INFO - TASK_ASSIGNED: {'robot_id': 'af8b90', 'from': 12, 'to': 6, 'destination_name': 'm4'}
+2025-03-30 21:03:10 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:03:13 - INFO - ROBOT_SPAWNED: {'robot_id': 'd9e646', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:03:16 - INFO - ROBOT_SPAWNED: {'robot_id': '5514e3', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:03:19 - INFO - ROBOT_SPAWNED: {'robot_id': 'f93f90', 'position': 7, 'vertex_name': 'm5'}
+2025-03-30 21:03:21 - INFO - ROBOT_SPAWNED: {'robot_id': '90da0e', 'position': 13, 'vertex_name': 'm8'}
+2025-03-30 21:03:23 - INFO - ROBOT_SPAWNED: {'robot_id': 'bee647', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:03:24 - INFO - ROBOT_SPAWNED: {'robot_id': '50f687', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:03:25 - INFO - ROBOT_SPAWNED: {'robot_id': '734591', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:04:40 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:04:41 - INFO - ROBOT_SPAWNED: {'robot_id': 'bf7eba', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:05:04 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:05:05 - INFO - ROBOT_SPAWNED: {'robot_id': '466378', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:05:08 - INFO - ROBOT_SPAWNED: {'robot_id': '97c16c', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:05:09 - INFO - ROBOT_SPAWNED: {'robot_id': '5946ed', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:05:11 - INFO - ROBOT_SPAWNED: {'robot_id': 'e2e03f', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:05:12 - INFO - ROBOT_SPAWNED: {'robot_id': 'cfb606', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:05:13 - INFO - ROBOT_SELECTED: {'robot_id': 'cfb606', 'position': 11, 'status': 'idle'}
+2025-03-30 21:05:15 - INFO - TASK_ASSIGNED: {'robot_id': 'cfb606', 'from': 11, 'to': 9, 'destination_name': 'm7'}
+2025-03-30 21:05:16 - INFO - ROBOT_SELECTED: {'robot_id': '466378', 'position': 3, 'status': 'idle'}
+2025-03-30 21:05:17 - INFO - TASK_ASSIGNED: {'robot_id': '466378', 'from': 3, 'to': 9, 'destination_name': 'm7'}
+2025-03-30 21:05:27 - INFO - ROBOT_CHARGING: {'robot_id': '466378', 'position': 9, 'battery_level': 93.72600421905517}
+2025-03-30 21:05:28 - INFO - ROBOT_SPAWNED: {'robot_id': '7a77cd', 'position': 7, 'vertex_name': 'm5'}
+2025-03-30 21:05:29 - INFO - ROBOT_SPAWNED: {'robot_id': '832096', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:07:50 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:07:51 - INFO - ROBOT_SPAWNED: {'robot_id': 'd3d78f', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:07:54 - INFO - ROBOT_SPAWNED: {'robot_id': 'c74891', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:07:56 - INFO - ROBOT_SPAWNED: {'robot_id': 'dbf4b4', 'position': 13, 'vertex_name': 'm8'}
+2025-03-30 21:08:01 - INFO - ROBOT_SPAWNED: {'robot_id': 'e2d43f', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:08:01 - INFO - ROBOT_SELECTED: {'robot_id': 'e2d43f', 'position': 6, 'status': 'idle'}
+2025-03-30 21:08:02 - INFO - TASK_ASSIGNED: {'robot_id': 'e2d43f', 'from': 6, 'to': 10, 'destination_name': 'm1'}
+2025-03-30 21:08:20 - INFO - ROBOT_SELECTED: {'robot_id': 'd3d78f', 'position': 1, 'status': 'idle'}
+2025-03-30 21:08:22 - INFO - ROBOT_SELECTED: {'robot_id': 'd3d78f', 'position': 1, 'status': 'idle'}
+2025-03-30 21:08:22 - INFO - TASK_ASSIGNED: {'robot_id': 'd3d78f', 'from': 1, 'to': 6, 'destination_name': 'm4'}
+2025-03-30 21:08:24 - INFO - ROBOT_SELECTED: {'robot_id': 'd3d78f', 'position': 1, 'status': 'waiting'}
+2025-03-30 21:08:24 - INFO - ROBOT_SELECTED: {'robot_id': 'e2d43f', 'position': 10, 'status': 'task_complete'}
+2025-03-30 21:08:25 - INFO - TASK_ASSIGNED: {'robot_id': 'e2d43f', 'from': 10, 'to': 6, 'destination_name': 'm4'}
+2025-03-30 21:08:26 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 13, 'status': 'idle'}
+2025-03-30 21:08:27 - INFO - TASK_ASSIGNED: {'robot_id': 'dbf4b4', 'from': 13, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 21:08:32 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 2, 'status': 'moving'}
+2025-03-30 21:08:33 - INFO - TASK_ASSIGNED: {'robot_id': 'dbf4b4', 'from': 2, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 21:08:34 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 2, 'status': 'waiting'}
+2025-03-30 21:08:35 - INFO - TASK_ASSIGNED: {'robot_id': 'dbf4b4', 'from': 2, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 21:08:35 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 2, 'status': 'waiting'}
+2025-03-30 21:08:36 - INFO - TASK_ASSIGNED: {'robot_id': 'dbf4b4', 'from': 2, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 21:08:37 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 2, 'status': 'waiting'}
+2025-03-30 21:08:38 - INFO - TASK_ASSIGNED: {'robot_id': 'dbf4b4', 'from': 2, 'to': 6, 'destination_name': 'm4'}
+2025-03-30 21:08:57 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 6, 'status': 'task_complete'}
+2025-03-30 21:08:58 - INFO - TASK_ASSIGNED: {'robot_id': 'dbf4b4', 'from': 6, 'to': 4, 'destination_name': 'm2'}
+2025-03-30 21:08:59 - INFO - ROBOT_SELECTED: {'robot_id': 'dbf4b4', 'position': 6, 'status': 'moving'}
+2025-03-30 21:08:59 - INFO - ROBOT_SELECTED: {'robot_id': 'e2d43f', 'position': 6, 'status': 'task_complete'}
+2025-03-30 21:09:01 - INFO - ROBOT_SPAWNED: {'robot_id': '25a7a1', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:09:02 - INFO - ROBOT_SELECTED: {'robot_id': 'e2d43f', 'position': 6, 'status': 'task_complete'}
+2025-03-30 21:09:03 - INFO - ROBOT_SELECTED: {'robot_id': '25a7a1', 'position': 4, 'status': 'idle'}
+2025-03-30 21:09:04 - INFO - ROBOT_SELECTED: {'robot_id': 'e2d43f', 'position': 6, 'status': 'task_complete'}
+2025-03-30 21:09:04 - INFO - TASK_ASSIGNMENT_FAILED: {'robot_id': 'e2d43f', 'from': 6, 'to': 11}
+2025-03-30 21:09:07 - INFO - ROBOT_SPAWNED: {'robot_id': '832ead', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 21:09:08 - INFO - ROBOT_CHARGING: {'robot_id': 'dbf4b4', 'position': 4, 'battery_level': 79.63499469757078}
+2025-03-30 21:09:08 - INFO - ROBOT_SPAWNED: {'robot_id': '3643ba', 'position': 5, 'vertex_name': 'V5'}
+2025-03-30 21:09:10 - INFO - ROBOT_SPAWNED: {'robot_id': '620a7a', 'position': 7, 'vertex_name': 'm5'}
+2025-03-30 21:09:11 - INFO - ROBOT_SPAWNED: {'robot_id': '93ef3e', 'position': 9, 'vertex_name': 'm7'}
+2025-03-30 21:09:12 - INFO - ROBOT_SPAWNED: {'robot_id': 'a302af', 'position': 12, 'vertex_name': 'm6'}
+2025-03-30 21:09:12 - INFO - ROBOT_SELECTED: {'robot_id': 'a302af', 'position': 12, 'status': 'idle'}
+2025-03-30 21:09:13 - INFO - ROBOT_SELECTED: {'robot_id': '93ef3e', 'position': 9, 'status': 'idle'}
+2025-03-30 21:09:14 - INFO - TASK_ASSIGNED: {'robot_id': '93ef3e', 'from': 9, 'to': 2, 'destination_name': 'V2'}
+2025-03-30 21:09:15 - INFO - ROBOT_SPAWNED: {'robot_id': 'ba165c', 'position': 13, 'vertex_name': 'm8'}
+2025-03-30 21:09:17 - INFO - ROBOT_SELECTED: {'robot_id': '93ef3e', 'position': 9, 'status': 'moving'}
+2025-03-30 21:09:18 - INFO - TASK_ASSIGNED: {'robot_id': '93ef3e', 'from': 2, 'to': 8, 'destination_name': 'V8'}
+2025-03-30 21:09:19 - INFO - ROBOT_SPAWNED: {'robot_id': '7a9bb0', 'position': 8, 'vertex_name': 'V8'}
+2025-03-30 21:09:26 - INFO - ROBOT_SELECTED: {'robot_id': 'ba165c', 'position': 13, 'status': 'idle'}
+2025-03-30 21:09:27 - INFO - ROBOT_SPAWNED: {'robot_id': 'b42229', 'position': 9, 'vertex_name': 'm7'}
+2025-03-30 21:09:28 - INFO - ROBOT_SPAWNED: {'robot_id': '81ccba', 'position': 2, 'vertex_name': 'V2'}
+2025-03-30 21:09:30 - INFO - ROBOT_SPAWNED: {'robot_id': '04f27f', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:09:31 - INFO - ROBOT_SPAWNED: {'robot_id': '4c1dca', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:09:31 - INFO - ROBOT_SELECTED: {'robot_id': '4c1dca', 'position': 11, 'status': 'idle'}
+2025-03-30 21:09:32 - INFO - ROBOT_SELECTED: {'robot_id': 'd3d78f', 'position': 1, 'status': 'waiting'}
+2025-03-30 21:09:33 - INFO - ROBOT_SELECTED: {'robot_id': 'e2d43f', 'position': 6, 'status': 'task_complete'}
+2025-03-30 21:12:44 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:12:57 - INFO - ROBOT_SPAWNED: {'robot_id': 'af0704', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:12:59 - INFO - ROBOT_SPAWNED: {'robot_id': '0dc962', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:13:00 - INFO - ROBOT_SPAWNED: {'robot_id': '7ce526', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:13:02 - INFO - ROBOT_SELECTED: {'robot_id': 'af0704', 'position': 10, 'status': 'idle'}
+2025-03-30 21:13:03 - INFO - TASK_ASSIGNED: {'robot_id': 'af0704', 'from': 10, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 21:13:04 - INFO - ROBOT_SELECTED: {'robot_id': '0dc962', 'position': 4, 'status': 'idle'}
+2025-03-30 21:13:08 - INFO - ROBOT_SPAWNED: {'robot_id': '6f2155', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:13:11 - INFO - ROBOT_SELECTED: {'robot_id': '0dc962', 'position': 4, 'status': 'idle'}
+2025-03-30 21:13:13 - INFO - ROBOT_SELECTED: {'robot_id': '6f2155', 'position': 11, 'status': 'idle'}
+2025-03-30 21:13:21 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:13:23 - INFO - ROBOT_SPAWNED: {'robot_id': '0093d4', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:13:25 - INFO - ROBOT_SPAWNED: {'robot_id': '8e07d3', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:13:27 - INFO - ROBOT_SPAWNED: {'robot_id': '0a2752', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 21:13:30 - INFO - ROBOT_SELECTED: {'robot_id': '0093d4', 'position': 10, 'status': 'idle'}
+2025-03-30 21:13:32 - INFO - TASK_ASSIGNED: {'robot_id': '0093d4', 'from': 10, 'to': 4, 'destination_name': 'm2'}
+2025-03-30 21:13:34 - INFO - ROBOT_SELECTED: {'robot_id': '0a2752', 'position': 0, 'status': 'idle'}
+2025-03-30 21:13:36 - INFO - TASK_ASSIGNED: {'robot_id': '0a2752', 'from': 0, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 21:13:49 - INFO - ROBOT_CHARGING: {'robot_id': '0093d4', 'position': 4, 'battery_level': 94.71683816909783}
+2025-03-30 21:16:58 - INFO - ROBOT_SPAWNED: {'robot_id': '08df9f', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:17:01 - INFO - ROBOT_SPAWNED: {'robot_id': '789d9f', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:17:03 - INFO - ROBOT_SELECTED: {'robot_id': '08df9f', 'position': 10, 'status': 'idle'}
+2025-03-30 21:17:05 - INFO - TASK_ASSIGNED: {'robot_id': '08df9f', 'from': 10, 'to': 3, 'destination_name': 'm9'}
+2025-03-30 21:17:06 - INFO - ROBOT_SELECTED: {'robot_id': '789d9f', 'position': 1, 'status': 'idle'}
+2025-03-30 21:17:09 - INFO - TASK_ASSIGNED: {'robot_id': '789d9f', 'from': 1, 'to': 13, 'destination_name': 'm8'}
+2025-03-30 21:17:23 - INFO - ROBOT_SELECTED: {'robot_id': '08df9f', 'position': 3, 'status': 'task_complete'}
+2025-03-30 21:17:24 - INFO - TASK_ASSIGNED: {'robot_id': '08df9f', 'from': 3, 'to': 2, 'destination_name': 'V2'}
+2025-03-30 21:17:25 - INFO - ROBOT_SELECTED: {'robot_id': '789d9f', 'position': 13, 'status': 'task_complete'}
+2025-03-30 21:17:26 - INFO - TASK_ASSIGNED: {'robot_id': '789d9f', 'from': 13, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 21:25:39 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:25:42 - INFO - ROBOT_SPAWNED: {'robot_id': 'e913ee', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:25:51 - INFO - ROBOT_SPAWNED: {'robot_id': '7ec4fd', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:25:52 - INFO - ROBOT_SPAWNED: {'robot_id': 'd2653f', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:25:54 - INFO - ROBOT_SELECTED: {'robot_id': 'e913ee', 'position': 10, 'status': 'idle'}
+2025-03-30 21:25:55 - INFO - TASK_ASSIGNED: {'robot_id': 'e913ee', 'from': 10, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 21:25:56 - INFO - ROBOT_SELECTED: {'robot_id': '7ec4fd', 'position': 4, 'status': 'idle'}
+2025-03-30 21:25:57 - INFO - TASK_ASSIGNED: {'robot_id': '7ec4fd', 'from': 4, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 21:26:35 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:26:36 - INFO - ROBOT_SPAWNED: {'robot_id': '167475', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:26:38 - INFO - ROBOT_SPAWNED: {'robot_id': '090b16', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:26:40 - INFO - ROBOT_SPAWNED: {'robot_id': '347b42', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:26:44 - INFO - ROBOT_SELECTED: {'robot_id': '167475', 'position': 1, 'status': 'idle'}
+2025-03-30 21:26:46 - INFO - TASK_ASSIGNED: {'robot_id': '167475', 'from': 1, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 21:26:58 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:27:02 - INFO - ROBOT_SPAWNED: {'robot_id': 'd32ae3', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:27:04 - INFO - ROBOT_SPAWNED: {'robot_id': '50eadb', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:27:05 - INFO - ROBOT_SPAWNED: {'robot_id': '8b9fa1', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:27:07 - INFO - ROBOT_SELECTED: {'robot_id': '50eadb', 'position': 4, 'status': 'idle'}
+2025-03-30 21:27:08 - INFO - TASK_ASSIGNED: {'robot_id': '50eadb', 'from': 4, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 21:27:09 - INFO - ROBOT_SELECTED: {'robot_id': 'd32ae3', 'position': 1, 'status': 'idle'}
+2025-03-30 21:27:10 - INFO - TASK_ASSIGNMENT_FAILED: {'robot_id': 'd32ae3', 'from': 1, 'to': 4}
+2025-03-30 21:27:12 - INFO - ROBOT_SELECTED: {'robot_id': 'd32ae3', 'position': 1, 'status': 'idle'}
+2025-03-30 21:27:13 - INFO - TASK_ASSIGNED: {'robot_id': 'd32ae3', 'from': 1, 'to': 4, 'destination_name': 'm2'}
+2025-03-30 21:27:23 - INFO - ROBOT_CHARGING: {'robot_id': 'd32ae3', 'position': 4, 'battery_level': 93.88010277748117}
+2025-03-30 21:27:40 - INFO - ROBOT_SPAWNED: {'robot_id': 'd24e6f', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:27:46 - INFO - ROBOT_SELECTED: {'robot_id': '50eadb', 'position': 5, 'status': 'task_complete'}
+2025-03-30 21:27:47 - INFO - TASK_ASSIGNED: {'robot_id': '50eadb', 'from': 5, 'to': 11, 'destination_name': 'm3'}
+2025-03-30 21:27:48 - INFO - ROBOT_SELECTED: {'robot_id': 'd24e6f', 'position': 3, 'status': 'idle'}
+2025-03-30 21:27:49 - INFO - TASK_ASSIGNED: {'robot_id': 'd24e6f', 'from': 3, 'to': 1, 'destination_name': 'm10'}
+2025-03-30 21:27:54 - INFO - ROBOT_SELECTED: {'robot_id': 'd32ae3', 'position': 4, 'status': 'idle'}
+2025-03-30 21:27:55 - INFO - TASK_ASSIGNED: {'robot_id': 'd32ae3', 'from': 4, 'to': 5, 'destination_name': 'V5'}
+2025-03-30 21:27:56 - INFO - ROBOT_SELECTED: {'robot_id': '8b9fa1', 'position': 6, 'status': 'idle'}
+2025-03-30 21:27:57 - INFO - TASK_ASSIGNED: {'robot_id': '8b9fa1', 'from': 6, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 21:28:03 - INFO - ROBOT_SPAWNED: {'robot_id': '5eb867', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:28:04 - INFO - ROBOT_SPAWNED: {'robot_id': 'c80d7b', 'position': 13, 'vertex_name': 'm8'}
+2025-03-30 21:28:05 - INFO - ROBOT_SPAWNED: {'robot_id': '3f5e9e', 'position': 2, 'vertex_name': 'V2'}
+2025-03-30 21:28:06 - INFO - ROBOT_SPAWNED: {'robot_id': '0cbe12', 'position': 9, 'vertex_name': 'm7'}
+2025-03-30 21:28:06 - INFO - ROBOT_SPAWNED: {'robot_id': 'fe6734', 'position': 8, 'vertex_name': 'V8'}
+2025-03-30 21:28:07 - INFO - ROBOT_SPAWNED: {'robot_id': '36d35d', 'position': 12, 'vertex_name': 'm6'}
+2025-03-30 21:28:09 - INFO - ROBOT_SPAWNED: {'robot_id': '267722', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:28:10 - INFO - ROBOT_SPAWNED: {'robot_id': 'ed371d', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:28:11 - INFO - ROBOT_SPAWNED: {'robot_id': '3b1978', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 21:28:12 - INFO - ROBOT_SPAWNED: {'robot_id': 'ad21c5', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:30:09 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:30:10 - INFO - ROBOT_SPAWNED: {'robot_id': 'e3f934', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:30:11 - INFO - ROBOT_SPAWNED: {'robot_id': '99134d', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:30:12 - INFO - ROBOT_SPAWNED: {'robot_id': '6b65c4', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:30:13 - INFO - ROBOT_SELECTED: {'robot_id': 'e3f934', 'position': 1, 'status': 'idle'}
+2025-03-30 21:30:15 - INFO - TASK_ASSIGNED: {'robot_id': 'e3f934', 'from': 1, 'to': 0, 'destination_name': 'V0'}
+2025-03-30 21:30:33 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:30:35 - INFO - ROBOT_SPAWNED: {'robot_id': '594308', 'position': 1, 'vertex_name': 'm10'}
+2025-03-30 21:30:36 - INFO - ROBOT_SPAWNED: {'robot_id': '72d8db', 'position': 0, 'vertex_name': 'V0'}
+2025-03-30 21:46:54 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:46:56 - INFO - ROBOT_SPAWNED: {'robot_id': '697725', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:46:57 - INFO - ROBOT_SPAWNED: {'robot_id': 'c87215', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:46:59 - INFO - ROBOT_SPAWNED: {'robot_id': 'd53f26', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:47:00 - INFO - ROBOT_SELECTED: {'robot_id': 'c87215', 'position': 4, 'status': 'idle'}
+2025-03-30 21:47:02 - INFO - TASK_ASSIGNED: {'robot_id': 'c87215', 'from': 4, 'to': 7, 'destination_name': 'm5'}
+2025-03-30 21:47:03 - INFO - ROBOT_SELECTED: {'robot_id': 'd53f26', 'position': 6, 'status': 'idle'}
+2025-03-30 21:47:05 - INFO - TASK_ASSIGNED: {'robot_id': 'd53f26', 'from': 6, 'to': 12, 'destination_name': 'm6'}
+2025-03-30 21:56:42 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:56:45 - INFO - ROBOT_SPAWNED: {'robot_id': '4cf5c3', 'position': 4, 'vertex_name': 'm2'}
+2025-03-30 21:56:46 - INFO - ROBOT_SPAWNED: {'robot_id': 'e7a128', 'position': 6, 'vertex_name': 'm4'}
+2025-03-30 21:56:47 - INFO - ROBOT_SPAWNED: {'robot_id': 'aab3f3', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:56:48 - INFO - ROBOT_SPAWNED: {'robot_id': '4a2564', 'position': 9, 'vertex_name': 'm7'}
+2025-03-30 21:56:49 - INFO - ROBOT_SPAWNED: {'robot_id': 'c7f097', 'position': 7, 'vertex_name': 'm5'}
+2025-03-30 21:56:56 - INFO - ROBOT_SPAWNED: {'robot_id': 'e0a890', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:56:57 - INFO - ROBOT_SPAWNED: {'robot_id': 'b6494e', 'position': 12, 'vertex_name': 'm6'}
+2025-03-30 21:58:32 - INFO - SYSTEM_START: {'graph_file': 'nav_graph_1.json', 'building': 'new_site', 'level': 'level1', 'vertices': 14, 'lanes': 28}
+2025-03-30 21:58:34 - INFO - ROBOT_SPAWNED: {'robot_id': 'b6f587', 'position': 10, 'vertex_name': 'm1'}
+2025-03-30 21:58:35 - INFO - ROBOT_SPAWNED: {'robot_id': '5f2cb1', 'position': 11, 'vertex_name': 'm3'}
+2025-03-30 21:58:37 - INFO - ROBOT_SPAWNED: {'robot_id': '5c3118', 'position': 3, 'vertex_name': 'm9'}
+2025-03-30 21:58:38 - INFO - ROBOT_SPAWNED: {'robot_id': 'f40e3a', 'position': 7, 'vertex_name': 'm5'}
+2025-03-30 21:58:40 - INFO - ROBOT_SELECTED: {'robot_id': 'b6f587', 'position': 10, 'status': 'idle'}
+2025-03-30 21:58:41 - INFO - ROBOT_SELECTED: {'robot_id': '5c3118', 'position': 3, 'status': 'idle'}
+2025-03-30 21:58:44 - INFO - TASK_ASSIGNED: {'robot_id': '5c3118', 'from': 3, 'to': 12, 'destination_name': 'm6'}
+2025-03-30 21:58:44 - INFO - ROBOT_SELECTED: {'robot_id': 'b6f587', 'position': 10, 'status': 'idle'}
+2025-03-30 21:58:46 - INFO - TASK_ASSIGNED: {'robot_id': 'b6f587', 'from': 10, 'to': 5, 'destination_name': 'V5'}
