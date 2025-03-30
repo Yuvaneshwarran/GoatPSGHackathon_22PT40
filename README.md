@@ -21,7 +21,7 @@ A visually intuitive and interactive Fleet Management System using Python and Py
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/fleet_management_system.git
+git clone https://github.com/Yuvaneshwarran/fleet_management_system.git
 cd fleet_management_system
 ```
 
@@ -50,7 +50,6 @@ python src/main.py --graph data/nav_graph_2.json
 | **Select Robot** | Click on an existing robot |
 | **Assign Task** | First select robot, then click destination vertex |
 | **View Details** | Hover over robots/vertices for tooltips |
-| **Pause/Resume** | Press Spacebar |
 
 ## Project Structure
 
@@ -85,28 +84,12 @@ fleet_management_system/
 * **Coordinate System**: Mercator projection for accurate positioning
 
 ## Screenshots
-
+*Robots spawning in the nodes*
+![Robots spawning in the nodes](./screenshots/robot_spawn.png)
 *Main interface showing robots navigating between locations*
+![robots navigating between locations](./screenshots/robot_navigation.png)
 
-*Robots queueing at charging stations*
 
 ## License
 
 MIT License - See LICENSE for details.
-
-**Notes for Implementation:**
-1. Replace `yourusername` with your actual GitHub username
-2. Add actual screenshots in a `screenshots/` directory
-3. Include a `LICENSE` file if needed
-4. For GIF demonstrations, you can add:
-```markdown
-## Demo
-![System in Action](screenshots/demo.gif)
-```
-
-This README provides:
-* Clear installation/usage instructions
-* Visual project structure
-* Interactive elements guide
-* Technical background
-* Space for visual demonstrations
